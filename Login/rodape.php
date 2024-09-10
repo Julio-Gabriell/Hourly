@@ -13,9 +13,10 @@
         </a>
 
         <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item"><a href="index.php?p=2" class="nav-link px-2 text-body-secondary">Home</a></li>
-          <li class="nav-item"><a href="index.php?p=3" class="nav-link px-2 text-body-secondary">Agende</a></li>
-          <li class="nav-item"><a href="index.php?p=4" class="nav-link px-2 text-body-secondary">Fale</a></li>
+          <li class="nav-item"><a href="home_logado.php" class="nav-link px-2 text-body-secondary">Home</a></li>
+          <li class="nav-item"><a href="catalogo.php" class="nav-link px-2 text-body-secondary">Agende</a></li>
+          <li class="nav-item"><a href="fale.php" class="nav-link px-2 text-body-secondary">Fale</a></li>
+          <li class="nav-item"><a href="planos.php" class="nav-link px-2 text-body-secondary">Planos</a></li>
         </ul>
       </footer>
     </span>

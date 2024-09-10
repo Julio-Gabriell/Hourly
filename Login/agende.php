@@ -94,163 +94,183 @@
   Cal.ns.sobrancelha("ui", { "theme": "light", "styles": { "branding": { "brandColor": "#1F6757" } }, "hideEventTypeDetails": false, "layout": "month_view" });
 </script>
 <!-- Cal element-click embed code ends -->
-  <h1 style="color: #13292A;" class="text-center mb-3">
-    Agende
-  </h1>
-    <div class="p-md-5 mb-4 rounded d-flex justify-content-between" style="background-color:#1F6757;">
-      <div class="list-group overflow-auto" style="max-height: 200px;">
-        <label class="list-group-item d-flex gap-2">
-          <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
-            data-cal-link="julio-gabriel-paes-pinto-txq3ro/platinar" data-cal-namespace="platinar"
-            data-cal-config='{"layout":"month_view"}' name="platinar" value=""
-            style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
-          <span class="pt-1 form-checked-content">
-            <strong>Platinar</strong>
-          </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-          <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
-            data-cal-link="julio-gabriel-paes-pinto-txq3ro/corte-barba" data-cal-namespace="corte-barba"
-            data-cal-config='{"layout":"month_view"}' name="corte_barba" value=""
-            style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
-          <span class="pt-1 form-checked-content">
-            <strong>Corte + Barba</strong>
-          </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-          <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
-            data-cal-link="julio-gabriel-paes-pinto-txq3ro/cabelo" data-cal-namespace="cabelo"
-            data-cal-config='{"layout":"month_view"}' name="barba" value=""
-            style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
-          <span class="pt-1 form-checked-content">
-            <strong>Cabelo</strong>
-          </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-          <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
-            data-cal-link="julio-gabriel-paes-pinto-txq3ro/barba" data-cal-namespace="barba"
-            data-cal-config='{"layout":"month_view"}' name="barba" value=""
-            style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
-          <span class="pt-1 form-checked-content">
-            <strong>Barba</strong>
-          </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-          <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
-            data-cal-link="julio-gabriel-paes-pinto-txq3ro/pezinho" data-cal-namespace="pezinho"
-            data-cal-config='{"layout":"month_view"}' name="pezinho" value=""
-            style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
-          <span class="pt-1 form-checked-content">
-            <strong>Pézinho</strong>
-          </span>
-        </label>
-        <label class="list-group-item d-flex gap-2">
-          <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
-            data-cal-link="julio-gabriel-paes-pinto-txq3ro/sobrancelha" data-cal-namespace="sobrancelha"
-            data-cal-config='{"layout":"month_view"}' name="sobrancelha" value=""
-            style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
-          <span class="pt-1 form-checked-content">
-            <strong>Sobrancelha</strong>
-          </span>
-        </label>
+<h1 style="color: #13292A;" class="text-center mb-3">
+  Agende
+</h1>
+<div class="p-md-5 mb-4 rounded d-flex justify-content-between" style="background-color:#1F6757;">
+  <div class="list-group overflow-auto" style="max-height: 200px;">
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
+        data-cal-link="julio-gabriel-paes-pinto-txq3ro/platinar" data-cal-namespace="platinar"
+        data-cal-config='{"layout":"month_view"}' name="platinar" value=""
+        style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
+      <span class="pt-1 form-checked-content">
+        <strong>Platinar</strong>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
+        data-cal-link="julio-gabriel-paes-pinto-txq3ro/corte-barba" data-cal-namespace="corte-barba"
+        data-cal-config='{"layout":"month_view"}' name="corte_barba" value=""
+        style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
+      <span class="pt-1 form-checked-content">
+        <strong>Corte + Barba</strong>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
+        data-cal-link="julio-gabriel-paes-pinto-txq3ro/cabelo" data-cal-namespace="cabelo"
+        data-cal-config='{"layout":"month_view"}' name="barba" value=""
+        style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
+      <span class="pt-1 form-checked-content">
+        <strong>Cabelo</strong>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
+        data-cal-link="julio-gabriel-paes-pinto-txq3ro/barba" data-cal-namespace="barba"
+        data-cal-config='{"layout":"month_view"}' name="barba" value=""
+        style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
+      <span class="pt-1 form-checked-content">
+        <strong>Barba</strong>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
+        data-cal-link="julio-gabriel-paes-pinto-txq3ro/pezinho" data-cal-namespace="pezinho"
+        data-cal-config='{"layout":"month_view"}' name="pezinho" value=""
+        style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
+      <span class="pt-1 form-checked-content">
+        <strong>Pézinho</strong>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="checkbox" onclick="checkboxRadioBehavior(this)"
+        data-cal-link="julio-gabriel-paes-pinto-txq3ro/sobrancelha" data-cal-namespace="sobrancelha"
+        data-cal-config='{"layout":"month_view"}' name="sobrancelha" value=""
+        style="font-size: 1.375em; background-color:#78CEBA; color: #13292A; border: none;">
+      <span class="pt-1 form-checked-content">
+        <strong>Sobrancelha</strong>
+      </span>
+    </label>
+  </div>
+  <label class="list-group-item py-3 pe-5 bg-white rounded" style="color: #13292A;" for="listGroupRadioGrid1">
+    <div class="list-group overflow-auto" style="max-height: 200px;">
+      <div class="p-3">
+        <input type="radio" style="accent-color: #78CEBA; border: none;" name="professional" id="professional1"
+          value="profissional1">
+        <strong class="">Profissional 1</strong>
+        <span class="d-block opacity-75">With support text underneath to add more detail</span>
       </div>
-      <label class="list-group-item py-3 pe-5 bg-white rounded" style="color: #13292A;" for="listGroupRadioGrid1">
-        <div class="p-4">
-        <input type="radio" style="background-color: #13292A; border: none;" name="professional" id="professional1" value="profissional1">
-            <strong class="">Profissional 1</strong>
-            <span class="d-block opacity-75">With support text underneath to add more detail</span>
-            </div>
-          </label>
-          <div class="bg-white rounded p-4">
-          <strong class="">Barbearia Parchola</strong>
-          </div>
-          </div>
+      <div class="p-3">
+        <input type="radio" style="accent-color: #78CEBA; border: none;" name="professional" id="professional1"
+          value="profissional1">
+        <strong class="">Profissional 2</strong>
+        <span class="d-block opacity-75">With support text underneath to add more detail</span>
+      </div>
+    </div>
+  </label>
+  <div class="bg-white rounded p-4">
+    <strong class="">Barbearia Parchola</strong>
+    <div class="d-flex flex-column justify-content-center pt-3 gap-3" style="color: #13292A;">
+      <div class="d-flex align-items-center">
+        <img src="../Imgs/zap.png" alt="" width="24" height="24">
+        <span>(14) 98808-7424</span>
+      </div>
+      <div class="d-flex align-items-center">
+        <img src="../Imgs/home.png" alt="" width="24" height="24">
+        <span>R. Treze de Maio</span>
+      </div>
     </div>
 
-    <script>
-      function checkboxRadioBehavior(clickedCheckbox) {
-        let checkboxes = document.querySelectorAll('input[name="platinar"]');
-        checkboxes.forEach((checkbox) => {
-          if (checkbox !== clickedCheckbox) {
-            checkbox.checked = false;
-          }
-        });
-        const link = clickedCheckbox.getAttribute('data-cal-link');
-        const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
-        const config = clickedCheckbox.getAttribute('data-cal-config');
-      }
+  </div>
+</div>
+</div>
 
-      function checkboxRadioBehavior(clickedCheckbox) {
-        let checkboxes = document.querySelectorAll('input[name="corte_barba"]');
-        checkboxes.forEach((checkbox) => {
-          if (checkbox !== clickedCheckbox) {
-            checkbox.checked = false;
-          }
-        });
-        const link = clickedCheckbox.getAttribute('data-cal-link');
-        const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
-        const config = clickedCheckbox.getAttribute('data-cal-config');
+<script>
+  function checkboxRadioBehavior(clickedCheckbox) {
+    let checkboxes = document.querySelectorAll('input[name="platinar"]');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox !== clickedCheckbox) {
+        checkbox.checked = false;
       }
+    });
+    const link = clickedCheckbox.getAttribute('data-cal-link');
+    const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
+    const config = clickedCheckbox.getAttribute('data-cal-config');
+  }
 
-      function checkboxRadioBehavior(clickedCheckbox) {
-        let checkboxes = document.querySelectorAll('input[name="cabelo"]');
-        checkboxes.forEach((checkbox) => {
-          if (checkbox !== clickedCheckbox) {
-            checkbox.checked = false;
-          }
-        });
-        const link = clickedCheckbox.getAttribute('data-cal-link');
-        const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
-        const config = clickedCheckbox.getAttribute('data-cal-config');
+  function checkboxRadioBehavior(clickedCheckbox) {
+    let checkboxes = document.querySelectorAll('input[name="corte_barba"]');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox !== clickedCheckbox) {
+        checkbox.checked = false;
       }
+    });
+    const link = clickedCheckbox.getAttribute('data-cal-link');
+    const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
+    const config = clickedCheckbox.getAttribute('data-cal-config');
+  }
 
-      function checkboxRadioBehavior(clickedCheckbox) {
-        let checkboxes = document.querySelectorAll('input[name="cabelo"]');
-        checkboxes.forEach((checkbox) => {
-          if (checkbox !== clickedCheckbox) {
-            checkbox.checked = false;
-          }
-        });
-        const link = clickedCheckbox.getAttribute('data-cal-link');
-        const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
-        const config = clickedCheckbox.getAttribute('data-cal-config');
+  function checkboxRadioBehavior(clickedCheckbox) {
+    let checkboxes = document.querySelectorAll('input[name="cabelo"]');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox !== clickedCheckbox) {
+        checkbox.checked = false;
       }
+    });
+    const link = clickedCheckbox.getAttribute('data-cal-link');
+    const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
+    const config = clickedCheckbox.getAttribute('data-cal-config');
+  }
 
-      function checkboxRadioBehavior(clickedCheckbox) {
-        let checkboxes = document.querySelectorAll('input[name="barba"]');
-        checkboxes.forEach((checkbox) => {
-          if (checkbox !== clickedCheckbox) {
-            checkbox.checked = false;
-          }
-        });
-        const link = clickedCheckbox.getAttribute('data-cal-link');
-        const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
-        const config = clickedCheckbox.getAttribute('data-cal-config');
+  function checkboxRadioBehavior(clickedCheckbox) {
+    let checkboxes = document.querySelectorAll('input[name="cabelo"]');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox !== clickedCheckbox) {
+        checkbox.checked = false;
       }
+    });
+    const link = clickedCheckbox.getAttribute('data-cal-link');
+    const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
+    const config = clickedCheckbox.getAttribute('data-cal-config');
+  }
 
-      function checkboxRadioBehavior(clickedCheckbox) {
-        let checkboxes = document.querySelectorAll('input[name="pezinho"]');
-        checkboxes.forEach((checkbox) => {
-          if (checkbox !== clickedCheckbox) {
-            checkbox.checked = false;
-          }
-        });
-        const link = clickedCheckbox.getAttribute('data-cal-link');
-        const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
-        const config = clickedCheckbox.getAttribute('data-cal-config');
+  function checkboxRadioBehavior(clickedCheckbox) {
+    let checkboxes = document.querySelectorAll('input[name="barba"]');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox !== clickedCheckbox) {
+        checkbox.checked = false;
       }
+    });
+    const link = clickedCheckbox.getAttribute('data-cal-link');
+    const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
+    const config = clickedCheckbox.getAttribute('data-cal-config');
+  }
 
-      function checkboxRadioBehavior(clickedCheckbox) {
-        let checkboxes = document.querySelectorAll('input[name="sobrancelha"]');
-        checkboxes.forEach((checkbox) => {
-          if (checkbox !== clickedCheckbox) {
-            checkbox.checked = false;
-          }
-        });
-        const link = clickedCheckbox.getAttribute('data-cal-link');
-        const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
-        const config = clickedCheckbox.getAttribute('data-cal-config');
+  function checkboxRadioBehavior(clickedCheckbox) {
+    let checkboxes = document.querySelectorAll('input[name="pezinho"]');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox !== clickedCheckbox) {
+        checkbox.checked = false;
       }
-    </script>
+    });
+    const link = clickedCheckbox.getAttribute('data-cal-link');
+    const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
+    const config = clickedCheckbox.getAttribute('data-cal-config');
+  }
+
+  function checkboxRadioBehavior(clickedCheckbox) {
+    let checkboxes = document.querySelectorAll('input[name="sobrancelha"]');
+    checkboxes.forEach((checkbox) => {
+      if (checkbox !== clickedCheckbox) {
+        checkbox.checked = false;
+      }
+    });
+    const link = clickedCheckbox.getAttribute('data-cal-link');
+    const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
+    const config = clickedCheckbox.getAttribute('data-cal-config');
+  }
+</script>
 
 <?php include_once "rodape.php"; ?>
