@@ -24,12 +24,12 @@
                     <div class="form-group">
                         <label for="nomeFale" style="color: #13292A;">Mude Seu Nome</label>
                         <input type="text" name="nomeFale" class="form-control"
-                            style="color: #13292A; background-color:#78CEBA;" id="nomeFale" placeholder="Primeiro Nome">
+                            style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none;" id="nomeFale" placeholder="Primeiro Nome">
                     </div>
                     <div class="form-group">
                         <label for="emailFale" style="color: #13292A;">Mude Seu Email</label>
                         <input type="email" name="emailFale" class="form-control"
-                            style="color: #13292A; background-color:#78CEBA;" id="emailFale" placeholder="Seu Email">
+                            style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none;" id="emailFale" placeholder="Seu Email">
                     </div>
                     <p class="text-center mt-2">
                             Esqueceu sua <a href="index.php?p=6" style="color: #78CEBA;">Senha?</a>

@@ -8,7 +8,7 @@
                 <form method="post" action="proc_login.php" id="loginForm">
                     <div class="form-group">
                         <label for="email" style="color: #13292A;">Email</label>
-                        <input type="email" name="email" class="form-control" style="color: #13292A; background-color:#78CEBA;" placeholder="Enter email">
+                        <input type="email" name="email" class="form-control" style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none;" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                         <p class="text-end mb-0">
@@ -16,7 +16,7 @@
                         </p>
                         <label for="senha" style="color: #13292A;">Senha</label>
                         <div class="input-group">
-                            <input type="password" name="senha" class="form-control" style="color: #13292A; background-color:#78CEBA;" id="senha" placeholder="Password">
+                            <input type="password" name="senha" class="form-control" style="color: #13292A; background-color:#78CEBA;  outline: none; box-shadow: none; border: none;" id="senha" placeholder="Password">
                             <div class="input-group-append">
                                 <button type="button" class="btn" id="togglePassword" style="background-color:#78CEBA; color: #13292A; border: none; margin-left: 5px;" onclick="togglePasswordVisibility()">
                                     <img src="Imgs/Eye.png" height="17" width="17" alt="" id="toggleImage">

@@ -8,18 +8,18 @@
                 <form method="post" action="proc_cadastro.php" id="loginForm">
                     <div class="form-group">
                         <label for="nome" style="color: #13292A;">Nome</label>
-                        <input type="text" name="nome" required class="form-control" style="color: #13292A; background-color:#78CEBA;" placeholder="Nome">
+                        <input type="text" name="nome" required class="form-control" style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none;" placeholder="Nome">
                     </div>
                     <div class="form-group">
                         <label for="email" style="color: #13292A;">E-mail</label>
                         <div class="input-group">
-                            <input type="email" name="email" required class="form-control" style="color: #13292A; background-color:#78CEBA;" placeholder="Email">
+                            <input type="email" name="email" required class="form-control" style="color: #13292A; background-color:#78CEBA;  outline: none; box-shadow: none; border: none;" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="senha" style="color: #13292A;">Senha</label>
                         <div class="input-group">
-                            <input type="password" name="senha1" required class="form-control" style="color: #13292A; background-color:#78CEBA;" id="senha" placeholder="Password">
+                            <input type="password" name="senha1" required class="form-control" style="color: #13292A; background-color:#78CEBA;  outline: none; box-shadow: none; border: none;" id="senha" placeholder="Password">
                             <div class="input-group-append">
                                 <button type="button" class="btn" id="togglePassword" style="background-color:#78CEBA; color: #13292A; border: none; margin-left: 5px;" onclick="togglePasswordVisibility1()">
                                     <img src="Imgs/Eye.png" height="17" width="17" alt="" id="toggleImage1">
@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label for="senha2" style="color: #13292A;">Confirmar Senha</label>
                         <div class="input-group">
-                            <input type="password" name="senha2" required class="form-control" style="color: #13292A; background-color:#78CEBA;" id="senha2" placeholder="Password">
+                            <input type="password" name="senha2" required class="form-control" style="color: #13292A; background-color:#78CEBA;  outline: none; box-shadow: none; border: none;" id="senha2" placeholder="Password">
                             <div class="input-group-append">
                                 <button type="button" class="btn" id="togglePassword2" style="background-color:#78CEBA; color: #13292A; border: none; margin-left: 5px;" onclick="togglePasswordVisibility2()">
                                     <img src="Imgs/Eye.png" height="17" width="17" alt="" id="toggleImage2">
