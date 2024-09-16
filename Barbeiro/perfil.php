@@ -1,9 +1,8 @@
+<?php
 
-    <?php 
-    
-         include_once("topo.php");
+include_once("topo.php");
 
-    ?> 
+?>
 
 <div class="container mt-5">
     <div class="row">
@@ -32,10 +31,11 @@
                             style="color: #13292A; background-color:#78CEBA;" id="emailFale" placeholder="Seu Email">
                     </div>
                     <p class="text-center mt-2">
-                            Esqueceu sua <a href="index.php?p=6" style="color: #78CEBA;">Senha?</a>
-                        </p>
-                        <div class="d-flex justify-content-center">
-                        <button type="submit" style="background-color:#78CEBA; color: #13292A;" class="btn mt-2 d-flex justify-content-center w-75" href="logout.php">Sair</button>
+                        Esqueceu sua <a href="index.php?p=6" style="color: #78CEBA;">Senha?</a>
+                    </p>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" style="background-color:#78CEBA; color: #13292A;"
+                            class="btn mt-2 d-flex justify-content-center w-75" href="logout.php">Sair</button>
                     </div>
                 </form>
             </div>
@@ -43,8 +43,8 @@
     </div>
 </div>
 
-<?php 
-    
-         include_once("rodape.php");
+<?php
 
-    ?>
+include_once("rodape.php");
+
+?>

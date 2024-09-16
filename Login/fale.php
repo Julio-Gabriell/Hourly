@@ -1,5 +1,5 @@
 <?php
-    include_once "topo.php";
+include_once "topo.php";
 ?>
 <div class="container mt-5">
     <div class="row">
@@ -11,18 +11,25 @@
                 <form method="post" action="zzzzzzzzzzzz" id="faleForm">
                     <div class="form-group">
                         <label for="nomeFale" style="color: #13292A;">Nome</label>
-                        <input type="text" name="nomeFale" class="form-control" style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none; id="nomeFale" placeholder="Primeiro Nome">
+                        <input type="text" name="nomeFale" class="form-control"
+                            style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none; id="
+                            nomeFale" placeholder="Primeiro Nome">
                     </div>
                     <div class="form-group">
                         <label for="emailFale" style="color: #13292A;">Email</label>
-                            <input type="email" name="emailFale" class="form-control" style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none; id="emailFale" placeholder="Seu Email">
+                        <input type="email" name="emailFale" class="form-control"
+                            style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none; id="
+                            emailFale" placeholder="Seu Email">
                     </div>
                     <div class="form-group">
                         <label for="assuntoFale" style="color: #13292A;">Assunto</label>
-                        <input type="text" name="assuntoFale" class="form-control" style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none; id="assuntoFale" placeholder="Assunto">
+                        <input type="text" name="assuntoFale" class="form-control"
+                            style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none; id="
+                            assuntoFale" placeholder="Assunto">
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button type="submit" style="background-color:#78CEBA; color: #13292A;" class="btn mt-2 d-flex justify-content-center w-75">Enviar</button>
+                        <button type="submit" style="background-color:#78CEBA; color: #13292A;"
+                            class="btn mt-2 d-flex justify-content-center w-75">Enviar</button>
                     </div>
                 </form>
             </div>
@@ -30,5 +37,5 @@
     </div>
 </div>
 <?php
-    include_once "rodape.php";
+include_once "rodape.php";
 ?>

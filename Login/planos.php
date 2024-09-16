@@ -20,7 +20,8 @@
               <li>Help center access</li>
             </ul>
             <a href="http://">
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" style="background-color: #78CEBA; color: #13292A; border: none;">Sign up for free</button>
+              <button type="button" class="w-100 btn btn-lg btn-outline-primary"
+                style="background-color: #78CEBA; color: #13292A; border: none;">Sign up for free</button>
             </a>
           </div>
         </div>
@@ -39,7 +40,8 @@
               <li>Help center access</li>
             </ul>
             <a href="http://">
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" style="background-color: #78CEBA; color: #13292A; border: none;">Sign up for free</button>
+              <button type="button" class="w-100 btn btn-lg btn-outline-primary"
+                style="background-color: #78CEBA; color: #13292A; border: none;">Sign up for free</button>
             </a>
           </div>
         </div>
@@ -58,7 +60,8 @@
               <li>Help center access</li>
             </ul>
             <a href="http://">
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary" style="background-color: #78CEBA; color: #13292A; border: none;">Sign up for free</button>
+              <button type="button" class="w-100 btn btn-lg btn-outline-primary"
+                style="background-color: #78CEBA; color: #13292A; border: none;">Sign up for free</button>
             </a>
           </div>
         </div>
@@ -80,42 +83,68 @@
         <tbody>
           <tr>
             <th scope="row" class="text-start">Public</th>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
           </tr>
           <tr>
             <th scope="row" class="text-start">Private</th>
             <td></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
           </tr>
         </tbody>
 
         <tbody>
           <tr>
             <th scope="row" class="text-start">Permissions</th>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
           </tr>
           <tr>
             <th scope="row" class="text-start">Sharing</th>
             <td></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
           </tr>
           <tr>
             <th scope="row" class="text-start">Unlimited members</th>
             <td></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
           </tr>
           <tr>
             <th scope="row" class="text-start">Extra security</th>
             <td></td>
             <td></td>
-            <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            <td><svg class="bi" width="24" height="24">
+                <use xlink:href="#check"></use>
+              </svg></td>
           </tr>
         </tbody>
       </table>

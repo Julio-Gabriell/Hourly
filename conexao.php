@@ -1,10 +1,10 @@
 <?php
 
-    $servidor = "localhost";
-    $usuario = "root";
-    $senha = "";
-    $base = "hourly_bd";
+$servidor = "localhost";
+$usuario = "root";
+$senha = "";
+$base = "hourly_bd";
 
-    $con = mysqli_connect($servidor, $usuario, $senha, $base) or die("Impossivel conectar");
-    
+$con = mysqli_connect($servidor, $usuario, $senha, $base) or die("Impossivel conectar");
+
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-include_once "topo.php";?>
+include_once "topo.php"; ?>
 
 <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center ">
         <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
@@ -19,7 +19,6 @@ include_once "topo.php";?>
 
 <?php
 
-        include_once "rodape.php";
+include_once "rodape.php";
 
 ?>
-

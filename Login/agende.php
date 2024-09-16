@@ -200,6 +200,8 @@
     const config = clickedCheckbox.getAttribute('data-cal-config');
   }
 
+
+
   function checkboxRadioBehavior(clickedCheckbox) {
     let checkboxes = document.querySelectorAll('input[name="corte_barba"]');
     checkboxes.forEach((checkbox) => {
@@ -212,17 +214,8 @@
     const config = clickedCheckbox.getAttribute('data-cal-config');
   }
 
-  function checkboxRadioBehavior(clickedCheckbox) {
-    let checkboxes = document.querySelectorAll('input[name="cabelo"]');
-    checkboxes.forEach((checkbox) => {
-      if (checkbox !== clickedCheckbox) {
-        checkbox.checked = false;
-      }
-    });
-    const link = clickedCheckbox.getAttribute('data-cal-link');
-    const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
-    const config = clickedCheckbox.getAttribute('data-cal-config');
-  }
+
+
 
   function checkboxRadioBehavior(clickedCheckbox) {
     let checkboxes = document.querySelectorAll('input[name="cabelo"]');
@@ -235,6 +228,9 @@
     const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
     const config = clickedCheckbox.getAttribute('data-cal-config');
   }
+
+
+
 
   function checkboxRadioBehavior(clickedCheckbox) {
     let checkboxes = document.querySelectorAll('input[name="barba"]');
@@ -248,6 +244,9 @@
     const config = clickedCheckbox.getAttribute('data-cal-config');
   }
 
+
+
+
   function checkboxRadioBehavior(clickedCheckbox) {
     let checkboxes = document.querySelectorAll('input[name="pezinho"]');
     checkboxes.forEach((checkbox) => {
@@ -259,6 +258,9 @@
     const namespace = clickedCheckbox.getAttribute('data-cal-namespace');
     const config = clickedCheckbox.getAttribute('data-cal-config');
   }
+
+
+
 
   function checkboxRadioBehavior(clickedCheckbox) {
     let checkboxes = document.querySelectorAll('input[name="sobrancelha"]');

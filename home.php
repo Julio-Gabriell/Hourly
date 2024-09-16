@@ -1,7 +1,8 @@
 <div class="container">
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center">
                 <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                        <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Agende seu estilo, agilize seu dia: Hourly,
+                        <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Agende seu estilo, agilize seu dia:
+                                Hourly,
                                 onde cada horário é um passo para sua melhor aparência!</h1>
                         <p class="lead pt-3">Hourly revoluciona o agendamento para barbearias,
                                 unindo clientes e profissionais em uma experiência inovadora.

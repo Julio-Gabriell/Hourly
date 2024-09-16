@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hourly</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../CSS/global.css">
     <link rel="icon" type="image/x-icon" href="../Imgs/icon.ico">
 </head>
@@ -26,7 +27,6 @@
                 <li><a href="planos.php" style=" color: #13292A;" class="nav-link px-2">Planos</a></li>
             </ul>
 
-            
             <div class="col-md-3 mb-2 mb-md-0 d-flex justify-content-center">
                 <a href="perfil.php">
                     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"

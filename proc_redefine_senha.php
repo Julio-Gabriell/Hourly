@@ -20,7 +20,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-  
+
     //? Atualize a senha no banco de dados
 
     $sql = "UPDATE usuarios SET senha = ?, token = NULL, expiracao_token = NULL WHERE token = ?";
