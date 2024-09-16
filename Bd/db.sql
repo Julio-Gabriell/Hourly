@@ -14,5 +14,7 @@ CREATE TABLE usuarios(
 	email VARCHAR(50) NOT NULL,
 	senha VARCHAR(32) NOT NULL,
 	dataCriacao TIMESTAMP DEFAULT NOW(),
-	token VARCHAR(255) DEFAULT NULL
+	token VARCHAR(255) DEFAULT NULL,
+	expiracao_token DATETIME
 	);
+	

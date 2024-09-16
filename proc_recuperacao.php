@@ -48,11 +48,10 @@ if ($result->num_rows > 0) {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com'; // SMTP do seu serviço de e-mail
     $mail->SMTPAuth = true;
-    $mail->SMTPSecure = 'tls';
     $mail->Username = 'paespintoj@gmail.com'; // Seu e-mail
-    $mail->Password = 'Judame29@'; // Sua senha
-    //  $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port = 587;
+    $mail->Password = 'iogmgrtltrdrtwqo'; // Sua senha
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Port = 465;
 
     $mail->setFrom('paespintoj@gmail.com', 'Hourly');
     $mail->addAddress($email);
