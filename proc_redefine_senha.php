@@ -8,7 +8,6 @@ if ($mysqli->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-// $senha_md5 = md5($senha);
 
 $token = $_POST['token'];
 $nova_senha = md5($_POST['nova_senha']);

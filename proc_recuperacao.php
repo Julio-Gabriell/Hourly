@@ -57,9 +57,25 @@ if ($result->num_rows > 0) {
     $mail->addAddress($email);
 
     $mail->isHTML(true);
-    $mail->Subject = 'Recuperação de Senha';
-    $mail->Body = "Clique no link para redefinir sua senha: <a href='$link'>$link</a>";
-    $mail->AltBody = "Clique no link para redefinir sua senha: $link";
+$mail->Subject = 'Redefina sua senha';
+$mail->Body = "
+    <p>Clique no botão abaixo para redefinir sua senha:</p>
+    <a href='$link' style='
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #13292A;
+      background-color: #78CEBA;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    '>Redefinir Senha</a>
+    <br><br>
+    <p>Hourly© 2024 Company, Inc</p>
+";
+$mail->AltBody = "Clique no link para redefinir sua senha: $link";
+
 
     $mail->send();
     echo 'E-mail de recuperação enviado com sucesso.';
