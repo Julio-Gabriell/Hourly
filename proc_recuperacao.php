@@ -37,14 +37,14 @@ if ($result->num_rows > 0) {
 
   //? Crie o link de recuperação de senha
 
-  $link = "http://localhost/hourly/index.php?p=13?token=$token";
+  $link = "http://localhost/hourly/index.php?p=13&token=$token";
 
   //? Configuração e envio do e-mail
 
   $mail = new PHPMailer(true);
 
   try {
-    $mail->SMTPDebug = 3;
+    // $mail->SMTPDebug = 3;
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com'; // SMTP do seu serviço de e-mail
     $mail->SMTPAuth = true;

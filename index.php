@@ -38,7 +38,8 @@ if (isset($_GET['p'])) {
             require_once "diferentes_senhas.php";
             break;
         case 13:
-            require_once "redefinir_senha.php";
+            include "redefinir_senha.php";
+         
              break;
     }
 } else {
