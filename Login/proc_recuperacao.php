@@ -2,9 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer_master/src/Exception.php';
-require 'PHPMailer_master/src/PHPMailer.php';
-require 'PHPMailer_master/src/SMTP.php';
+require '../PHPMailer_master/src/Exception.php';
+require '../PHPMailer_master/src/PHPMailer.php';
+require '../PHPMailer_master/src/SMTP.php';
 
 //? Conecta com o banco de dados 
 
@@ -37,7 +37,7 @@ if ($result->num_rows > 0) {
 
   //? Crie o link de recuperação de senha
 
-  $link = "http://localhost/hourly/index.php?p=13&token=$token";
+  $link = "http://localhost/hourly/login/redefinir_senha.php?token=$token";
 
   //? Configuração e envio do e-mail
 

@@ -1,4 +1,6 @@
-
+<?php
+include_once "topo.php";
+?>
 
 <div class="container mt-5">
   <div class="row">
@@ -21,3 +23,6 @@
       </div>
     </div>
   </div>
+  <?php
+include_once "rodape.php";
+?>

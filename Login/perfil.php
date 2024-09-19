@@ -37,7 +37,7 @@ include_once("topo.php");
                             class="btn mt-2 d-flex w-75 justify-content-center">Salvar</button>
                     </div>
                     <p class="text-center mt-2">
-                        Esqueceu sua <a href="../index.php?p=9" style="color: #78CEBA;">Senha?</a>
+                        Esqueceu sua <a href="esqueceu_senha.php" style="color: #78CEBA;">Senha?</a>
                     </p>
                 </form>
                 <div class="d-flex justify-content-center">
