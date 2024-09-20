@@ -16,14 +16,14 @@ include_once "topo.php";
         <form method="post" action="proc_cadastro_barbearia.php" id="loginForm">
           <div class="form-group">
             <label for="nome_barbearia" style="color: #13292A;">Nome da barbearia</label>
-            <input type="text" name="nome_barbearia" required class="form-control"
+            <input type="text" name="nome_barbearia" id="nome_barbearia" required class="form-control"
               style="color: #13292A; background-color:#479D89; outline: none; box-shadow: none; border: none;"
               placeholder="Nome">
           </div>
           <div class="form-group">
-            <label for="cep" style="color: #13292A;">CEP da Barbearia</label>
+            <label for="cep_barbearia" style="color: #13292A;">CEP da Barbearia</label>
             <div class="input-group">
-              <input type="number" name="cep_barbearia" required class="form-control"
+              <input type="tel" id="cep_barbearia" name="cep_barbearia" id="cep" pattern="[0-9]{5}-[0-9]{3}" required class="form-control"
                 style="color: #13292A; background-color:#479D89;  outline: none; box-shadow: none; border: none;"
                 placeholder="CEP">
             </div>
@@ -31,7 +31,7 @@ include_once "topo.php";
           <div class="form-group">
             <label for="num_barbearia" style="color: #13292A;">Numero da Barbearia</label>
             <div class="input-group">
-              <input type="text" name="num_barbearia" required class="form-control"
+              <input type="number" name="num_barbearia" id="num_barbearia" required class="form-control"
                 style="color: #13292A; background-color:#479D89;  outline: none; box-shadow: none; border: none;"
                 placeholder="Ex: 420">
             </div>
@@ -48,7 +48,7 @@ include_once "topo.php";
           <div class="form-group">
             <label for="des_barbearia" style="color: #13292A;">Descrição da Barbearia</label>
             <div class="input-group">
-              <input type="tel" name="des_barbearia" required class="form-control"
+              <input type="tel" name="des_barbearia" id="des_barbearia" required class="form-control"
                 style="color: #13292A; background-color:#479D89;  outline: none; box-shadow: none; border: none;"
                 placeholder="Uma breve descrição da Barbearia">
             </div>
@@ -63,23 +63,39 @@ include_once "topo.php";
   </div>
 </div>
 <script>
-    document.getElementById('tel_barbearia').addEventListener('input', function (e) {
-        let input = e.target;
-        let value = input.value.replace(/\D/g, '');
-        let formattedValue = '';
+  document.getElementById('tel_barbearia').addEventListener('input', function (e) {
+    let input = e.target;
+    let value = input.value.replace(/\D/g, '');
+    let formattedValue = '';
 
-        if (value.length > 0) {
-            formattedValue = '(' + value.substring(0, 2);
-        }
-        if (value.length >= 3) {
-            formattedValue += ') ' + value.substring(2, 7);
-        }
-        if (value.length >= 8) {
-            formattedValue += '-' + value.substring(7, 11);
-        }
+    if (value.length > 0) {
+      formattedValue = '(' + value.substring(0, 2);
+    }
+    if (value.length >= 3) {
+      formattedValue += ') ' + value.substring(2, 7);
+    }
+    if (value.length >= 8) {
+      formattedValue += '-' + value.substring(7, 11);
+    }
 
-        input.value = formattedValue;
-    });
+    input.value = formattedValue;
+  });
+
+  document.getElementById('cep_barbearia').addEventListener('input', function (e) {
+    let input = e.target;
+    let value = input.value.replace(/\D/g, '');
+    let formattedValue = '';
+
+    if (value.length > 0) {
+      formattedValue = value.substring(0, 5);
+    }
+    if (value.length >= 6) {
+      formattedValue += '-' + value.substring(5, 8);
+    }
+
+    input.value = formattedValue;
+
+  });
 </script>
 <?php
 
