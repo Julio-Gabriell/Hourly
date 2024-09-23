@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $_SESSION['descricao'] = $_POST['descricao'];
   
   // Redireciona para a segunda etapa
-  header("Location: etapa2.php");
+  header("Location: cadastro_etapaDois.php");
   exit();
 }
 

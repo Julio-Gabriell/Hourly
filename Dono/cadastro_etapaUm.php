@@ -13,7 +13,7 @@ include_once "topo.php";
     </h4>
     <div class="col-md-4 offset-md-4">
       <div class="card-body">
-        <form method="post" action="proc_cadastro_barbearia.php" id="loginForm">
+        <form method="post" action="proc_etapaUm.php" id="cadastro_etapaUm">
           <div class="form-group">
             <label for="nome_barbearia" style="color: #13292A;">Nome da barbearia</label>
             <input type="text" name="nome_barbearia" id="nome_barbearia" required class="form-control"
