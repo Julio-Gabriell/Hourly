@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $_SESSION['dias_funcionamento'] = $dias_funcionamento;
 
-    echo "Os dias selecionados foram: ";
-    echo implode(", ", $dias_funcionamento);
+    header("Location: cadastro_etapaTreis.php");
 }
 ?>

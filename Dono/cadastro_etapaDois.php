@@ -1,3 +1,8 @@
+<?php
+
+include_once "topo.php";
+
+?>
 <div class="container mt-5">
   <h4 class="text-center" style="color: #13292A;">
     Escolha os dias em que sua Barbearia vai funcionar!
@@ -42,3 +47,8 @@
     </div>
   </form>
 </div>
+<?php
+
+include_once "rodape.php";
+
+?>
