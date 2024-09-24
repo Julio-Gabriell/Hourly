@@ -2,32 +2,29 @@
 // Inicie a sessão
 session_start();
 
-// Array para armazenar os horários de cada dia da semana
-$horarios = [];
-
-// Função para capturar os horários
+// Função para capturar os horários de cada dia, com o nome do dia específico nos inputs
 function capturarHorarios($dia) {
     $horarios_dia = [];
 
-    // Captura os horários enviados no formulário
-    if (isset($_POST['hora_inicio_manha'], $_POST['hora_termino_manha'])) {
+    // Captura os horários da manhã, tarde e noite de acordo com o nome do dia
+    if (isset($_POST["hora_inicio_manha_$dia"], $_POST["hora_termino_manha_$dia"])) {
         $horarios_dia['manha'] = [
-            'inicio' => $_POST['hora_inicio_manha'],
-            'termino' => $_POST['hora_termino_manha']
+            'inicio' => $_POST["hora_inicio_manha_$dia"],
+            'termino' => $_POST["hora_termino_manha_$dia"]
         ];
     }
 
-    if (isset($_POST['hora_inicio_tarde'], $_POST['hora_termino_tarde'])) {
+    if (isset($_POST["hora_inicio_tarde_$dia"], $_POST["hora_termino_tarde_$dia"])) {
         $horarios_dia['tarde'] = [
-            'inicio' => $_POST['hora_inicio_tarde'],
-            'termino' => $_POST['hora_termino_tarde']
+            'inicio' => $_POST["hora_inicio_tarde_$dia"],
+            'termino' => $_POST["hora_termino_tarde_$dia"]
         ];
     }
 
-    if (isset($_POST['hora_inicio_noite'], $_POST['hora_termino_noite'])) {
+    if (isset($_POST["hora_inicio_noite_$dia"], $_POST["hora_termino_noite_$dia"])) {
         $horarios_dia['noite'] = [
-            'inicio' => $_POST['hora_inicio_noite'],
-            'termino' => $_POST['hora_termino_noite']
+            'inicio' => $_POST["hora_inicio_noite_$dia"],
+            'termino' => $_POST["hora_termino_noite_$dia"]
         ];
     }
 
@@ -37,6 +34,10 @@ function capturarHorarios($dia) {
 // Dias da semana
 $dias_semana = ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado'];
 
+// Array para armazenar os horários de todos os dias
+$horarios = [];
+
+// Captura os horários de cada dia da semana
 foreach ($dias_semana as $dia) {
     $horarios[$dia] = capturarHorarios($dia);
 }
@@ -44,4 +45,7 @@ foreach ($dias_semana as $dia) {
 // Armazena os horários na sessão
 $_SESSION['horarios_funcionamento'] = $horarios;
 
- header("Location: home_dono.php");
+// Redireciona para a próxima etapa
+header("Location: proc_cadastroFinal.php");
+exit();
+?>
