@@ -3,10 +3,10 @@ session_start();
 
 // Exibindo os dados da primeira etapa
 $nome_barbearia = $_SESSION['nome_barbearia'];
-$cep = $_SESSION['cep'];
-$numero = $_SESSION['numero'];
-$telefone = $_SESSION['telefone'];
-$descricao = $_SESSION['descricao'];
+$cep = $_SESSION['cep_barbearia'];
+$numero = $_SESSION['num_barbearia'];
+$telefone = $_SESSION['tel_barbearia'];
+$descricao = $_SESSION['des_barbearia'];
 
 // Exibindo os dias de funcionamento
 $dias_funcionamento = $_SESSION['dias_funcionamento'];
