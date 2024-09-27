@@ -11,31 +11,31 @@ include_once "topo.php";
     <div class="d-flex justify-content-center">
       <div class="d-flex flex-column justify-content-center mt-4">
         <div class="form-check mx-2">
-          <input class="form-check-input mt-2" type="checkbox" name="segunda" value="segunda" id="segunda">
+          <input class="form-check-input mt-2" style="background-color:#78CEBA; color: #13292A; border: none; box-shadow: none;" type="checkbox" name="segunda" value="segunda" id="segunda">
           <label class="form-check-label mt-1" for="segunda">Segunda</label>
         </div>
         <div class="form-check mx-2">
-          <input class="form-check-input mt-2" type="checkbox" name="terca" value="terca" id="terca">
+          <input class="form-check-input mt-2" style="background-color:#78CEBA; color: #13292A; border: none; box-shadow: none;" type="checkbox" name="terca" value="terca" id="terca">
           <label class="form-check-label mt-1" for="terca">Terça</label>
         </div>
         <div class="form-check mx-2">
-          <input class="form-check-input mt-2" type="checkbox" name="quarta" value="quarta" id="quarta">
+          <input class="form-check-input mt-2" style="background-color:#78CEBA; color: #13292A; border: none; box-shadow: none;" type="checkbox" name="quarta" value="quarta" id="quarta">
           <label class="form-check-label mt-1" for="quarta">Quarta</label>
         </div>
         <div class="form-check mx-2">
-          <input class="form-check-input mt-2" type="checkbox" name="quinta" value="quinta" id="quinta">
+          <input class="form-check-input mt-2" style="background-color:#78CEBA; color: #13292A; border: none; box-shadow: none;" type="checkbox" name="quinta" value="quinta" id="quinta">
           <label class="form-check-label mt-1" for="quinta">Quinta</label>
         </div>
         <div class="form-check mx-2">
-          <input class="form-check-input mt-2" type="checkbox" name="sexta" value="sexta" id="sexta">
+          <input class="form-check-input mt-2" style="background-color:#78CEBA; color: #13292A; border: none; box-shadow: none;" type="checkbox" name="sexta" value="sexta" id="sexta">
           <label class="form-check-label mt-1" for="sexta">Sexta</label>
         </div>
         <div class="form-check mx-2">
-          <input class="form-check-input mt-2" type="checkbox" name="sabado" value="sabado" id="sabado">
+          <input class="form-check-input mt-2" style="background-color:#78CEBA; color: #13292A; border: none; box-shadow: none;" type="checkbox" name="sabado" value="sabado" id="sabado">
           <label class="form-check-label mt-1" for="sabado">Sábado</label>
         </div>
         <div class="form-check mx-2">
-          <input class="form-check-input mt-2" type="checkbox" name="domingo" value="domingo" id="domingo">
+          <input class="form-check-input mt-2" style="background-color:#78CEBA; color: #13292A; border: none; box-shadow: none;" type="checkbox" name="domingo" value="domingo" id="domingo">
           <label class="form-check-label mt-1" for="domingo">Domingo</label>
         </div>
         <div class="d-flex justify-content-center">

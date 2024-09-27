@@ -1,22 +1,18 @@
 <?php
 session_start();
 
-// Exibindo os dados da primeira etapa
 $nome_barbearia = $_SESSION['nome_barbearia'];
 $cep = $_SESSION['cep_barbearia'];
 $numero = $_SESSION['num_barbearia'];
 $telefone = $_SESSION['tel_barbearia'];
 $descricao = $_SESSION['des_barbearia'];
 
-// Exibindo os dias de funcionamento
 $dias_funcionamento = $_SESSION['dias_funcionamento'];
 
-// Exibindo os horários de funcionamento
 $horarios_funcionamento = $_SESSION['horarios_funcionamento'];
 
-// Aqui você pode exibir ou salvar os dados no banco de dados
+//! substituir por colocar no banco dps
 
-// Exemplo de exibição:
 echo "Nome da Barbearia: $nome_barbearia <br>";
 echo "CEP: $cep <br>";
 echo "Número: $numero <br>";
