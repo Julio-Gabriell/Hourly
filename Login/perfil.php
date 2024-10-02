@@ -1,6 +1,6 @@
 <?php
 
-include_once("topo.php");
+include_once "topo.php";
 
 ?>
 
@@ -11,15 +11,20 @@ include_once("topo.php");
                 Perfil
             </h1>
             <div class="card-body">
-                <div class="row">
+                <div class="row d-flex justify-content-center mb-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
-                        style="color: #13292A;" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        style="color: #13292A; cursor: pointer;" class="bi bi-person-circle" viewBox="0 0 16 16" id="uploadIcon">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                         <path
                             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                     </svg>
                 </div>
-                <form method="post" action="proc_perfil.php" id="faleForm">
+
+                <form method="post" action="proc_perfil.php" id="PerfilForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" name="profile_picture" id="profile_picture" accept="image/*" style="display: none;">
+                    </div>
+
                     <div class="form-group">
                         <label for="nomeFale" style="color: #13292A;">Mude Seu Nome</label>
                         <input type="text" name="nomeFale" required class="form-control"
@@ -51,8 +56,14 @@ include_once("topo.php");
     </div>
 </div>
 
+<script>
+    document.getElementById('uploadIcon').addEventListener('click', function() {
+        document.getElementById('profile_picture').click();
+    });
+</script>
+
 <?php
 
-include_once("rodape.php");
+include_once "rodape.php";
 
 ?>
