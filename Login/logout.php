@@ -1,13 +1,15 @@
 <?php
-session_start();  // Inicia a sessão
 
-// Limpa todas as variáveis de sessão
+session_start();
+
 $_SESSION = array();
 
-// Destroi a sessão
 session_destroy();
 
-// Redireciona para a página de login
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 header("Location: ../index.php");
 exit();
 ?>
