@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dias_funcionamento[] = 'segunda';
     }
     if (isset($_POST['terca'])) { 
-        $dias_funcionamento[] = 'terca';
+        $dias_funcionamento[] = 'terça';
     }
     if (isset($_POST['quarta'])) {
         $dias_funcionamento[] = 'quarta';
