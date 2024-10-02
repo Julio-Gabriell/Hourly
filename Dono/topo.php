@@ -1,3 +1,8 @@
+<?php   
+include_once 'session.php';
+verificarLogin();
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
