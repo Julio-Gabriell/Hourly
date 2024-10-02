@@ -1,6 +1,4 @@
-<?php
-
-include_once "topo.php";
+<?php include_once "topo.php"; 
 
 if (isset($_SESSION['dias_funcionamento'])) {
   $dias_selecionados = $_SESSION['dias_funcionamento'];
@@ -25,33 +23,34 @@ if (isset($_SESSION['dias_funcionamento'])) {
 
   <form method="post" action="proc_etapaTreis.php" id="cadastro_etapaTreis">
     <?php foreach ($dias_selecionados as $dia): ?>
-      <div class="d-flex flex-row gap-2 mt-2 ms-5">
+      <div class="d-flex flex-column align-items-center gap-2 mt-2">
         <h3><?php echo ucfirst($dia); ?>:</h3>
-        <button type="button" class="btn dropdown-toggle dropdown-toggle-split"
-          style="background-color: #479D89; border: none; color: #13292A;" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <span class="visually-hidden">Toggle Dropdown</span>
-          Horários
-        </button>
-        <ul class="dropdown-menu p-1" style="width: 300px;">
-          <label class="d-flex justify-content-around"> Manhã
-            <input type="time" name="hora_inicio_manha_<?php echo $dia; ?>" id="hora_inicio_manha_<?php echo $dia; ?>">
-            <span>até</span>
-            <input type="time" name="hora_termino_manha_<?php echo $dia; ?>" id="hora_termino_manha_<?php echo $dia; ?>">
-          </label>
-          <label class="d-flex justify-content-around"> Tarde
-            <input type="time" name="hora_inicio_tarde_<?php echo $dia; ?>" id="hora_inicio_tarde_<?php echo $dia; ?>"
-              style="margin-left: 8px;">
-            <span>até</span>
-            <input type="time" name="hora_termino_tarde_<?php echo $dia; ?>" id="hora_termino_tarde_<?php echo $dia; ?>">
-          </label>
-          <label class="d-flex justify-content-around"> Noite
-            <input type="time" name="hora_inicio_noite_<?php echo $dia; ?>" id="hora_inicio_noite_<?php echo $dia; ?>"
-              style="margin-left: 9px;">
-            <span>até</span>
-            <input type="time" name="hora_termino_noite_<?php echo $dia; ?>" id="hora_termino_noite_<?php echo $dia; ?>">
-          </label>
-        </ul>
+        <div class="dropdown">
+          <button type="button" class="btn dropdown-toggle"
+            style="background-color: #479D89; border: none; color: #13292A;" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Horários
+          </button>
+          <ul class="dropdown-menu p-1" style="width: 300px;">
+            <label class="d-flex justify-content-around"> Manhã
+              <input type="time" name="hora_inicio_manha_<?php echo $dia; ?>" id="hora_inicio_manha_<?php echo $dia; ?>">
+              <span>até</span>
+              <input type="time" name="hora_termino_manha_<?php echo $dia; ?>" id="hora_termino_manha_<?php echo $dia; ?>">
+            </label>
+            <label class="d-flex justify-content-around"> Tarde
+              <input type="time" name="hora_inicio_tarde_<?php echo $dia; ?>" id="hora_inicio_tarde_<?php echo $dia; ?>"
+                style="margin-left: 8px;">
+              <span>até</span>
+              <input type="time" name="hora_termino_tarde_<?php echo $dia; ?>" id="hora_termino_tarde_<?php echo $dia; ?>">
+            </label>
+            <label class="d-flex justify-content-around"> Noite
+              <input type="time" name="hora_inicio_noite_<?php echo $dia; ?>" id="hora_inicio_noite_<?php echo $dia; ?>"
+                style="margin-left: 9px;">
+              <span>até</span>
+              <input type="time" name="hora_termino_noite_<?php echo $dia; ?>" id="hora_termino_noite_<?php echo $dia; ?>">
+            </label>
+          </ul>
+        </div>
       </div>
     <?php endforeach; ?>
     <div class="d-flex justify-content-center mt-4">
@@ -62,12 +61,4 @@ if (isset($_SESSION['dias_funcionamento'])) {
     </div>
   </form>
 </div>
-  <!-- <div class="d-flex flex-column">
-  <h3 class="text-danger d-flex justify-content-center mt-5">
-    ATENÇÃO
-  </h3>
-  <p class=" d-flex justify-content-center">
-    Certifique-se de que os horarios estão de acordo com nosso modelo.
-  </p>
-  </div> -->
 <?php include_once "rodape.php"; ?>
