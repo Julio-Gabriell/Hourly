@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['email'] = $email;
             $_SESSION['logado'] = TRUE;
             $_SESSION['nomeCompleto'] = $row['nomeCompleto'];
+            $_SESSION['userID'] = $row['id'];
             header("Location: Login/home_logado.php");
             exit();
         } else {

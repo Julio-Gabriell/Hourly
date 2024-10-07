@@ -1,59 +1,36 @@
-<?php
-// Verifica se o formulário foi enviado
+<?php 
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Diretório onde as imagens de perfil serão armazenadas
+    // Diretório de destino
     $target_dir = __DIR__ . "/../uploads/";
-    
-    // Caminho completo do arquivo de upload (com o nome original)
     $target_file = $target_dir . basename($_FILES["profile_picture"]["name"]);
-    
-    // Verifica o tipo de arquivo (extensão)
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    // Flag para verificar se o upload deve ser processado
-    $uploadOk = 1;
+    // Verificar se o upload foi bem-sucedido
+    if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) {
+        echo "O arquivo foi enviado com sucesso.";
 
-    // Verifica se o arquivo é realmente uma imagem
+        // Caminho relativo para armazenar no banco de dados
+        $profile_picture_path = "uploads/" . basename($_FILES["profile_picture"]["name"]);
 
-    $check = getimagesize($_FILES["profile_picture"]["tmp_name"]);
-    if ($check !== false) {
-        $uploadOk = 1;
-    } else {
-        echo "O arquivo não é uma imagem.";
-        $uploadOk = 0;
-    }
+        // ID do usuário (você precisaria ter o ID do usuário em sessão ou de outra forma)
+        $user_id = $_SESSION['userID']; // Supondo que você tenha o ID do usuário na sessão
 
-    // Verifica se o arquivo já existe
-    if (file_exists($target_file)) {
-        echo "Desculpe, o arquivo já existe.";
-        $uploadOk = 0;
-    }
+        // Conexão com o banco de dados
+        $conn = new mysqli("localhost", "root", "", "hourly_bd");
 
-    // Limita o tamanho do arquivo (2MB)
-    if ($_FILES["profile_picture"]["size"] > 2000000) {
-        echo "Desculpe, o arquivo é muito grande.";
-        $uploadOk = 0;
-    }
+        // Atualizar o caminho da foto no banco de dados
+        $sql = "UPDATE usuarios SET foto_perfil='$profile_picture_path' WHERE id=$user_id";
 
-    // Permite apenas determinados formatos de arquivo
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-        echo "Desculpe, apenas arquivos JPG, JPEG e PNG são permitidos.";
-        $uploadOk = 0;
-    }
-
-    // Verifica se ocorreu algum erro
-    if ($uploadOk == 0) {
-        echo "Desculpe, o arquivo não foi enviado.";
-    } else {
-        // Tenta mover o arquivo enviado para o diretório de destino
-        if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) {
-            echo "O arquivo " . htmlspecialchars(basename($_FILES["profile_picture"]["name"])) . " foi enviado com sucesso.";
+        if ($conn->query($sql) === TRUE) {
+            echo "Foto de perfil atualizada com sucesso.";
         } else {
-            echo "Desculpe, houve um erro ao enviar seu arquivo.";
+            echo "Erro ao atualizar a foto de perfil: " . $conn->error;
         }
-    }
-} else {
-    echo "Nenhum arquivo foi enviado.";
-}
 
+        $conn->close();
+    } else {
+        echo "Desculpe, houve um erro ao enviar seu arquivo.";
+    }
+}
 ?>
