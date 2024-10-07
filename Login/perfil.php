@@ -11,16 +11,6 @@ include_once("topo.php");
                 Perfil
             </h1>
             <div class="card-body">
-                <a href="foto_perfil.php">
-                <div class="row">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
-                        style="color: #13292A;" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                        <path
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                    </svg>
-                </div>
-                </a>
                 <form method="post" action="proc_perfil.php" id="faleForm">
                     <div class="form-group">
                         <label for="nomeFale" style="color: #13292A;">Mude Seu Nome</label>
@@ -38,8 +28,11 @@ include_once("topo.php");
                         <button type="submit" style="background-color:#78CEBA; color: #13292A;"
                             class="btn mt-2 d-flex w-75 justify-content-center">Salvar</button>
                     </div>
-                    <p class="text-center mt-2">
+                    <p class="text-center">
                         Esqueceu sua <a href="esqueceu_senha.php" style="color: #78CEBA;">Senha?</a>
+                    </p>
+                    <p class="text-center">
+                        Quer escolher sua foto de <a href="foto_perfil.php" style="color: #78CEBA;">Perfil?</a>
                     </p>
                 </form>
                 <div class="d-flex justify-content-center">

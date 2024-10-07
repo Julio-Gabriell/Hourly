@@ -1,11 +1,11 @@
-<?php   
+<?php
 include_once 'session.php';
 verificarLogin();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,17 +32,30 @@ verificarLogin();
                 <li><a href="planos.php" style=" color: #13292A;" class="nav-link px-2">Planos</a></li>
             </ul>
 
+            <a href="perfil.php">
+                <?php
+                $user_id = $_SESSION['userID'];
+                $conn = new mysqli("localhost", "root", "", "hourly_bd");
 
-            <div class="col-md-3 mb-2 mb-md-0 d-flex justify-content-center">
-                <a href="perfil.php">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
-                        style="color: #13292A;" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                        <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                    </svg>
-                </a>
-            </div>
+                $sql = "SELECT foto_perfil FROM usuarios WHERE id=$user_id";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $foto_perfil = $row['foto_perfil'];
+
+                    if ($foto_perfil == null || $foto_perfil == "") {
+                        $foto_perfil = "uploads/default.png"; 
+                    }
+
+                    echo '<img style="object-fit: cover; border-radius: 50%;" src="../' . $foto_perfil . '" alt="Foto de perfil" width="100" height="100">';
+                } else {
+                    echo "Erro ao carregar a foto de perfil.";
+                }
+
+                $conn->close();
+                ?>
+            </a>
         </header>
     </div>
     <div class="container">
