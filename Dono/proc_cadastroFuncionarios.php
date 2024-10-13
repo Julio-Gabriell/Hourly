@@ -2,6 +2,8 @@
 // Inclui a conexão com o banco de dados
 $conn = new mysqli("localhost", "root", "", "hourly_bd");
 
+$funcionarios = [];
+
 // Verifica se o formulário foi enviado corretamente
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Coleta os dados do formulário
@@ -16,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $imagemTipo = $_FILES['profile_picture']['type'];
 
         // Definir o diretório de upload e mover o arquivo para lá
-        $uploadDir = 'uploads/profile_pictures/';
+        $uploadDir = '../uploads/';
         $imagemCaminho = $uploadDir . basename($imagemNome);
 
         // Verifica se o diretório existe, se não, cria-o

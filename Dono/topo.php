@@ -30,6 +30,7 @@ verificarLogin();
                 <li><a href="agenda.php" style=" color: #13292A;" class="nav-link px-2">Agendamentos</a></li>
                 <li><a href="fale.php" style=" color: #13292A;" class="nav-link px-2">Fale</a></li>
                 <li><a href="planos.php" style=" color: #13292A;" class="nav-link px-2">Planos</a></li>
+                <li><a href="cadastro_servicos.php" style=" color: #13292A;" class="nav-link px-2">Cadastrar Serviços</a></li>
             </ul>
 
 
