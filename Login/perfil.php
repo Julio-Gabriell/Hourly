@@ -40,7 +40,7 @@ $user_id = $_SESSION['userID'];
                     </p>
                 </form>
                 <div class="d-flex justify-content-center">
-                    <a href="../index.php">
+                    <a href="logout.php">
                         <button type="button" class="btn btn-lg btn-primary"
                             style="background-color:#78CEBA; color: #13292A; border: none;">Sair</button>
                     </a>

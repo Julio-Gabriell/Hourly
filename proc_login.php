@@ -23,9 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $row = $result->fetch_assoc();
         if ($senha_md5 === $row['senha']) {
             $_SESSION['email'] = $email;
-            $_SESSION['logado'] = TRUE;
             $_SESSION['nomeCompleto'] = $row['nomeCompleto'];
             $_SESSION['userID'] = $row['id'];
+            $_SESSION['logado'] = TRUE;
+            $_SESSION['cliente'] = $cargo;
             header("Location: Login/home_logado.php");
             exit();
         } else {
