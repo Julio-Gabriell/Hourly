@@ -20,29 +20,43 @@ verificarLogin();
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="col-md-3 mb-2 mb-md-0 justify-content-center">
-                <a href="home_barbeiro.php">
+                <a href="home_dono.php">
                     <img src="../Imgs/logo.png" alt=""></img>
                 </a>
             </div>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="home_barbeiro.php" style=" color: #13292A;" class="nav-link px-2">Home</a></li>
+                <li><a href="home_dono.php" style=" color: #13292A;" class="nav-link px-2">Home</a></li>
                 <li><a href="agenda.php" style=" color: #13292A;" class="nav-link px-2">Agendamentos</a></li>
                 <li><a href="fale.php" style=" color: #13292A;" class="nav-link px-2">Fale</a></li>
                 <li><a href="planos.php" style=" color: #13292A;" class="nav-link px-2">Planos</a></li>
             </ul>
 
 
-            <div class="col-md-3 mb-2 mb-md-0 d-flex justify-content-center">
-                <a href="perfil.php">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
-                        style="color: #13292A;" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                        <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                    </svg>
-                </a>
-            </div>
+            <a href="perfil.php">
+                <?php
+                $user_id = $_SESSION['userID'];
+                $conn = new mysqli("localhost", "root", "", "hourly_bd");
+
+                $sql = "SELECT foto_perfil FROM usuarios WHERE id=$user_id";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $foto_perfil = $row['foto_perfil'];
+
+                    if ($foto_perfil == null || $foto_perfil == "") {
+                        $foto_perfil = "uploads/default.png"; 
+                    }
+
+                    echo '<img style="object-fit: cover; border-radius: 50%;" src="../' . $foto_perfil . '" alt="Foto de perfil" width="100" height="100">';
+                } else {
+                    echo "Erro ao carregar a foto de perfil.";
+                }
+
+                $conn->close();
+                ?>
+            </a>
         </header>
     </div>
     <div class="container"></div>

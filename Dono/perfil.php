@@ -1,6 +1,10 @@
 <?php
 
-include_once("topo.php");
+include_once "topo.php";
+
+$nomeCompleto = $_SESSION['nomeCompleto'];
+
+$user_id = $_SESSION['userID'];
 
 ?>
 
@@ -8,7 +12,7 @@ include_once("topo.php");
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <h1 style="color: #13292A;" class="text-center">
-                Perfil
+            Olá, <?php echo $nomeCompleto; ?>
             </h1>
             <div class="card-body">
                 <form method="post" action="proc_perfil.php" id="faleForm">
@@ -48,6 +52,6 @@ include_once("topo.php");
 
 <?php
 
-include_once("rodape.php");
+include_once "rodape.php";
 
 ?>

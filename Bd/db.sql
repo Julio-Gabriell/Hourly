@@ -18,3 +18,11 @@ CREATE TABLE usuarios(
 	expiracao_token DATETIME
 	);
 	
+CREATE TABLE funcionarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,        -- Chave primária com incremento automático
+    nome VARCHAR(100) NOT NULL,               -- Nome do funcionário
+    email VARCHAR(100) NOT NULL UNIQUE,       -- E-mail do funcionário (único)
+    funcao VARCHAR(50) NOT NULL,              -- Função ou cargo do funcionário
+    foto_perfil VARCHAR(255) DEFAULT 'uploads/default.png', -- Caminho da foto de perfil, com valor padrão
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Data de cadastro
+);
