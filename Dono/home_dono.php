@@ -71,7 +71,7 @@ $email = $_SESSION['email'];
           $funcao = $row['funcao'];
 
           if ($foto_perfil == null || $foto_perfil == "") {
-            $foto_perfil = "uploads/default.png";
+            $foto_perfil = "../uploads/default.png";
           }
 
           echo '

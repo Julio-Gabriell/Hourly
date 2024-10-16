@@ -1,4 +1,16 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../PHPMailer_master/src/Exception.php';
+require '../PHPMailer_master/src/PHPMailer.php';
+require '../PHPMailer_master/src/SMTP.php';
+
+session_start();
+
+$nome_barbearia = $_SESSION['nome_barbearia'];
+
 // Inclui a conexão com o banco de dados
 $conn = new mysqli("localhost", "root", "", "hourly_bd");
 
@@ -15,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
         $imagemTmp = $_FILES['profile_picture']['tmp_name'];
         $imagemNome = $_FILES['profile_picture']['name'];
-        $imagemTipo = $_FILES['profile_picture']['type'];
 
         // Definir o diretório de upload e mover o arquivo para lá
         $uploadDir = '../uploads/';
@@ -27,16 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Movendo o arquivo para o diretório de destino
-        if (move_uploaded_file($imagemTmp, $imagemCaminho)) {
-            // O upload foi bem-sucedido
-        } else {
-            // Falha no upload
+        if (!move_uploaded_file($imagemTmp, $imagemCaminho)) {
             echo "Erro ao carregar a foto de perfil.";
             exit;
         }
     } else {
         // Define um caminho padrão caso nenhuma imagem tenha sido enviada
-        $imagemCaminho = 'uploads/default.png';
+        $imagemCaminho = '../uploads/default.png';
     }
 
     // Inserindo os dados no banco de dados
@@ -45,36 +53,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param('ssss', $nome, $email, $funcao, $imagemCaminho);
 
     if ($stmt->execute()) {
-        // Cadastro bem-sucedido
+        $mail = new PHPMailer(true);
 
-        // Configurando o e-mail para o funcionário cadastrado
-        $to = $email;
-        $subject = "Cadastro de Funcionário - Sucesso!";
-        $message = "
-            Olá, $nome!
-            
-            Seu cadastro como funcionário foi realizado com sucesso. Sua função cadastrada é: $funcao.
-            
-            Caso tenha alguma dúvida, entre em contato com o RH.
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com'; 
+            $mail->SMTPAuth = true;
+            $mail->Username = 'paespintoj@gmail.com'; 
+            $mail->Password = 'iogmgrtltrdrtwqo'; 
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
 
-            Atenciosamente,
-            Equipe Hourly.
-        ";
-        $headers = "From: rh@empresa.com\r\n";
-        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+            $mail->setFrom('paespintoj@gmail.com', 'Hourly');
+            $mail->addAddress($email);
 
-        // Enviando o e-mail
-        if (mail($to, $subject, $message, $headers)) {
-            echo "Funcionário cadastrado com sucesso. E-mail enviado para $email.";
-        } else {
-            echo "Funcionário cadastrado, mas houve um problema ao enviar o e-mail.";
+            $link = "http://localhost/hourly/Login/aceitar_contrato.php"; // Definir link de redefinição de senha
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Barbearia $nome_barbearia te Convida';
+            $mail->Body = "
+                <p>Clique no botão abaixo e insira o código da barbearia:</p>
+                <a href='$link' style='
+                  display: inline-block;
+                  padding: 10px 20px;
+                  font-size: 16px;
+                  color: #13292A;
+                  background-color: #78CEBA;
+                  text-align: center;
+                  text-decoration: none;
+                  border-radius: 5px;
+                  margin-top: 10px;
+                '>Aceitar Contrato</a>
+                <br><br>
+                <p>Hourly© 2024 Company, Inc</p>
+            ";
+            $mail->AltBody = "Clique no link para aceitar ser contrato: $link";
+
+            $mail->send();
+            echo 'E-mail de recuperação enviado com sucesso.';
+
+        } catch (Exception $e) {
+            echo "O e-mail não pôde ser enviado. Erro do PHPMailer: {$mail->ErrorInfo}";
         }
 
         // Redirecionar ou exibir uma mensagem de sucesso
         header("Location: home_dono.php");
         exit;
+
     } else {
-        echo "Erro ao cadastrar funcionário: " . $conn->error;
+        echo "Erro ao cadastrar funcionário: " . $stmt->error;
     }
 
     // Fechando a conexão
@@ -83,4 +110,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "Método de requisição inválido.";
 }
-?>
