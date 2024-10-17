@@ -99,6 +99,12 @@ $email = $_SESSION['email'];
     <a href="cadastro_funcionario.php" class="d-flex justify-content-center">
       <img src="../Imgs/Contratação.png" alt="" width="60" height="60">
     </a>
+    <h3 class="d-flex justify-content-center">
+      Demitir funcionarios
+    </h3>
+    <a href="cadastro_funcionario.php" class="d-flex justify-content-center">
+      <img src="../Imgs/Demissão.png" alt="" width="60" height="60">
+    </a>
   </div>
 </div>
 <?php

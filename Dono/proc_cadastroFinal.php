@@ -1,5 +1,4 @@
-<?php
-// Conexão com o banco de dados
+<?php // Conexão com o banco de dados
 $conn = new mysqli("localhost", "root", "", "hourly_bd");
 
 if ($conn->connect_error) {
@@ -26,6 +25,9 @@ $stmtBarbearia->bind_param('ssss', $nome_barbearia, $cep, $numero, $descricao);
 
 if ($stmtBarbearia->execute()) {
     $barbearia_id = $stmtBarbearia->insert_id; // Pegando o ID da barbearia inserida
+
+    // Armazenando o ID da barbearia na sessão
+    $_SESSION['barbearia_id'] = $barbearia_id;
 
     // Inserindo o telefone da barbearia
     $sqlTelefone = "INSERT INTO telefones_barbearia (barbearia_id, telefone) VALUES (?, ?)";
@@ -55,7 +57,7 @@ if ($stmtBarbearia->execute()) {
         }
     }
 
-    echo "Barbearia e dados relacionados inseridos com sucesso!";
+    header("Location: home_dono.php");
 } else {
     echo "Erro ao inserir os dados: " . $conn->error;
 }
