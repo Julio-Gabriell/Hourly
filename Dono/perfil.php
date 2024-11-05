@@ -15,7 +15,7 @@ $user_id = $_SESSION['userID'];
             Olá, <?php echo $nomeCompleto; ?>
             </h1>
             <div class="card-body">
-                <form method="post" action="proc_perfil.php" id="faleForm">
+                <form method="post" action="proc_perfilDados.php" id="faleForm">
                     <div class="form-group">
                         <label for="nomeFale" style="color: #13292A;">Mude Seu Nome</label>
                         <input type="text" name="nomeFale" required class="form-control"
