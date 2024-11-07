@@ -24,15 +24,18 @@ try {
     $senha = htmlentities(htmlspecialchars($senha1));
     $senha = md5($senha); // Hash da senha
 
+    // Definindo o cargo como 'cliente' no momento do registro
+    $cargo = 'cliente';
+
     // Preparando a consulta SQL
-    $stmt = $mysqli->prepare("INSERT INTO usuarios (senha, email, nomeCompleto) VALUES (?, ?, ?)");
+    $stmt = $mysqli->prepare("INSERT INTO usuarios (senha, email, nomeCompleto, cargo) VALUES (?, ?, ?, ?)");
 
     if (!$stmt) {
         throw new Exception("Preparação da declaração falhou: " . $mysqli->error);
     }
 
     // Associando os parâmetros
-    $stmt->bind_param('sss', $senha, $email, $nome);
+    $stmt->bind_param('ssss', $senha, $email, $nome, $cargo);
     $stmt->execute();
 
     // Verificando se o cadastro foi bem-sucedido
@@ -40,7 +43,7 @@ try {
         // Iniciando a sessão com as mesmas variáveis que o código anterior usa
         $_SESSION['email'] = $email;
         $_SESSION['logado'] = TRUE;
-        $_SESSION['cliente'] = $cargo;
+        $_SESSION['cargo'] = $cargo; // Agora o cargo também é armazenado na sessão
         $_SESSION['nomeCompleto'] = $nome;
         $_SESSION['userID'] = $stmt->insert_id; // Pegando o ID gerado na inserção
 

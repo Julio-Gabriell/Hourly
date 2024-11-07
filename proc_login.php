@@ -26,8 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['nomeCompleto'] = $row['nomeCompleto'];
             $_SESSION['userID'] = $row['id'];
             $_SESSION['logado'] = TRUE;
-            $_SESSION['cliente'] = $cargo;
-            header("Location: Login/home_logado.php");
+            $_SESSION['cargo'] = $row['cargo']; // Define o cargo do usuário a partir do valor no banco de dados
+
+            // Redireciona com base no cargo
+            if ($row['cargo'] === 'cliente') {
+                header("Location: Login/home_logado.php");
+            } elseif ($row['cargo'] === 'funcionario') {
+                header("Location: Barbeiro/home_barbeiro.php");
+            } elseif ($row['cargo'] === 'dono') {
+                header("Location: home_dono.php");
+            }
             exit();
         } else {
             header("Location: index.php?p=10");

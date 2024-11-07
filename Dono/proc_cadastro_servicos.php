@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Se tudo deu certo, confirma a transação
         $conn->commit();
 
-        echo "Serviço cadastrado com sucesso!";
+        header("Location: home_dono.php");
     } catch (Exception $e) {
         // Em caso de erro, desfaz as mudanças
         $conn->rollback();

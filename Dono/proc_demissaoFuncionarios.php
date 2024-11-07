@@ -26,6 +26,23 @@ if (isset($_POST['funcionario_id'])) {
         $row = $result->fetch_assoc();
         $email = $row['email'];
 
+        // Verifica e define serviços como "inativo" se apenas este funcionário realizar o serviço
+        $sql_servicos = "SELECT servico_id FROM servico_funcionario WHERE funcionario_id = $funcionario_id";
+        $servicos = $conn->query($sql_servicos);
+
+        while ($servico = $servicos->fetch_assoc()) {
+            $servico_id = $servico['servico_id'];
+
+            // Conta quantos funcionários estão associados ao serviço
+            $countResult = $conn->query("SELECT COUNT(*) AS total FROM servico_funcionario WHERE servico_id = $servico_id");
+
+            $countRow = $countResult->fetch_assoc();
+            if ($countRow['total'] == 1) {
+                // Se apenas um funcionário realiza o serviço, define o status como "inativo"
+                $conn->query("UPDATE servico_funcionario SET status = 'inativo' WHERE servico_id = $servico_id AND funcionario_id = $funcionario_id");
+            }
+        }
+
         // Deletando o funcionário do banco de dados
         $sql_delete = "DELETE FROM funcionarios WHERE id = $funcionario_id";
 
@@ -49,9 +66,9 @@ if (isset($_POST['funcionario_id'])) {
 
                 // Conteúdo do e-mail
                 $mail->isHTML(true);
-                $mail->Subject = "Caro Profissional, você foi demitido.";
+                $mail->Subject = "Caro Profissional, informamos você foi desligado da empresa.";
                 $mail->Body = "Obrigado por fazer parte do nosso sistema, até a próxima!";
-                $mail->AltBody = "Você foi demitido.";
+                $mail->AltBody = "Você foi desligado da empresa.";
 
                 // Enviando o e-mail
                 $mail->send();

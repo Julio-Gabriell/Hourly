@@ -1,4 +1,5 @@
-<?php // Conexão com o banco de dados
+<?php 
+// Conexão com o banco de dados
 $conn = new mysqli("localhost", "root", "", "hourly_bd");
 
 if ($conn->connect_error) {
@@ -18,10 +19,13 @@ $descricao = $_SESSION['des_barbearia'];
 $dias_funcionamento = $_SESSION['dias_funcionamento']; // Array de dias
 $horarios_funcionamento = $_SESSION['horarios_funcionamento']; // Array de horários
 
+// Pegando o ID do dono da barbearia da sessão
+$dono_id = $_SESSION['user_id'];  // O ID do dono deve estar armazenado na sessão após o login
+
 // Inserindo os dados da barbearia
-$sqlBarbearia = "INSERT INTO barbearias (nome, cep, numero, descricao) VALUES (?, ?, ?, ?)";
+$sqlBarbearia = "INSERT INTO barbearias (nome, cep, numero, descricao, dono_id) VALUES (?, ?, ?, ?, ?)";
 $stmtBarbearia = $conn->prepare($sqlBarbearia);
-$stmtBarbearia->bind_param('ssss', $nome_barbearia, $cep, $numero, $descricao);
+$stmtBarbearia->bind_param('ssssi', $nome_barbearia, $cep, $numero, $descricao, $dono_id); // Adicionando dono_id
 
 if ($stmtBarbearia->execute()) {
     $barbearia_id = $stmtBarbearia->insert_id; // Pegando o ID da barbearia inserida
@@ -57,6 +61,7 @@ if ($stmtBarbearia->execute()) {
         }
     }
 
+    // Redirecionando para a página de sucesso ou onde for necessário
     header("Location: home_dono.php");
 } else {
     echo "Erro ao inserir os dados: " . $conn->error;

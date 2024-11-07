@@ -32,7 +32,7 @@ $result = $conn->query($sql);
           </div>
           <div class="form-group">
             <label for="tempo_servico" style="color: #13292A;">Tempo médio do Serviço</label>
-            <input type="number" name="tempo_servico" id="tempo_servico" required class="form-control"
+            <input type="number" step="5" name="tempo_servico" id="tempo_servico" required class="form-control"
               style="color: #13292A; background-color:#479D89; outline: none; box-shadow: none; border: none;"
               placeholder="Tempo do Serviço">
           </div>
