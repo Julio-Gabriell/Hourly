@@ -6,7 +6,7 @@
 
 ###
 
-<h4 align="left">Projeto desenvolvido usando as tecnologias PHP, Bootstrap e MySQL</h4>
+<h4 align="left">Projeto desenvolvido usando as tecnologias PHP, Bootstrap, JS e MySQL</h4>
 
 ###
 

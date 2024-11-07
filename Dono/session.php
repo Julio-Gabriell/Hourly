@@ -18,11 +18,11 @@ function verificarLogin()
         exit();
     } elseif ($cargo === 'dono') {
         // Verificação do cadastro da barbearia
-        $dono_id = $_SESSION['user_id']; // Assumindo que o ID do dono está na sessão
-        include 'conexao.php'; // Inclua seu arquivo de conexão com o banco de dados
+        $dono_id = $_SESSION['userID']; // Assumindo que o ID do dono está na sessão
+        include '../conexao.php'; // Inclua seu arquivo de conexão com o banco de dados
         
-        $query = "SELECT COUNT(*) as barbearia_cadastrada FROM negocio WHERE dono_id = ?";
-        $stmt = $conn->prepare($query);
+        $query = "SELECT COUNT(*) as barbearia_cadastrada FROM barbearias WHERE dono_id = ?";
+        $stmt = $con->prepare($query);
         $stmt->bind_param("i", $dono_id);
         $stmt->execute();
         $result = $stmt->get_result();

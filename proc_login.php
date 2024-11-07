@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } elseif ($row['cargo'] === 'funcionario') {
                 header("Location: Barbeiro/home_barbeiro.php");
             } elseif ($row['cargo'] === 'dono') {
-                header("Location: home_dono.php");
+                header("Location: Dono/home_dono.php");
             }
             exit();
         } else {
