@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($conn->query($sql) === TRUE) {
             // Redirecionar após o sucesso
-            header("Location: home_logado.php");
+            header("Location: home_dono.php");
             exit; // Pare a execução do script
         } else {
             echo "Erro ao atualizar a foto de perfil: " . $conn->error;

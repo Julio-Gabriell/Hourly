@@ -20,7 +20,7 @@ $dias_funcionamento = $_SESSION['dias_funcionamento']; // Array de dias
 $horarios_funcionamento = $_SESSION['horarios_funcionamento']; // Array de horários
 
 // Pegando o ID do dono da barbearia da sessão
-$dono_id = $_SESSION['user_id'];  // O ID do dono deve estar armazenado na sessão após o login
+$dono_id = $_SESSION['userID'];  // O ID do dono deve estar armazenado na sessão após o login
 
 // Inserindo os dados da barbearia
 $sqlBarbearia = "INSERT INTO barbearias (nome, cep, numero, descricao, dono_id) VALUES (?, ?, ?, ?, ?)";
@@ -62,7 +62,7 @@ if ($stmtBarbearia->execute()) {
     }
 
     // Redirecionando para a página de sucesso ou onde for necessário
-    header("Location: home_dono.php");
+    header("Location: ../Dono/home_dono.php");
 } else {
     echo "Erro ao inserir os dados: " . $conn->error;
 }
