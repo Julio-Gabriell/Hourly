@@ -2,6 +2,8 @@
 
 include_once "topo.php";
 
+session_start();
+
 $nomeCompleto = $_SESSION['nomeCompleto'];
 
 $user_id = $_SESSION['userID'];
