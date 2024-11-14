@@ -19,6 +19,48 @@ $descricao = $_SESSION['des_barbearia'];
 $dias_funcionamento = $_SESSION['dias_funcionamento']; // Array de dias
 $horarios_funcionamento = $_SESSION['horarios_funcionamento']; // Array de horários
 
+function buscarCep($cep) {
+    // Remove traços e espaços para garantir o formato correto
+    $cep = preg_replace('/[^0-9]/', '', $cep);
+
+    // Verifica se o CEP tem 8 dígitos
+    if (strlen($cep) != 8) {
+        return "CEP inválido!";
+    }
+
+    // Monta a URL de requisição para a API do ViaCEP
+    $url = "https://viacep.com.br/ws/{$cep}/json/";
+
+    // Faz a requisição para a API
+    $response = file_get_contents($url);
+
+    // Verifica se houve uma resposta
+    if (!$response) {
+        return "Não foi possível buscar o CEP!";
+    }
+
+    // Converte a resposta JSON em um array associativo
+    $dadosCep = json_decode($response, true);
+
+    // Verifica se houve algum erro na busca do CEP
+    if (isset($dadosCep['erro']) && $dadosCep['erro'] === true) {
+        return "CEP não encontrado!";
+    }
+
+    return $dadosCep; // Retorna os dados do CEP como array
+}
+
+// Exemplo de uso
+$cep = "01001000"; // Insira o CEP desejado
+$dados = buscarCep($cep);
+
+if (is_array($dados)) {
+    // Armazena cada dado em uma variável específica
+    $rua = $dados['logradouro'];
+    $bairro = $dados['bairro'];
+    $cidade = $dados['localidade'];
+    $estado = $dados['uf'];}
+
 // Pegando o ID do dono da barbearia da sessão
 $dono_id = $_SESSION['userID'];
 

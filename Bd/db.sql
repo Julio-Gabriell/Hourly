@@ -83,3 +83,18 @@ CREATE TABLE horarios_funcionamento (
 );
 
 ALTER TABLE servico_funcionario ADD COLUMN status ENUM('ativo', 'inativo') DEFAULT 'ativo';
+
+-- Adicionando a coluna 'cargo' à tabela de usuários
+ALTER TABLE usuarios ADD COLUMN cargo ENUM('cliente', 'funcionario', 'dono') NOT NULL DEFAULT 'cliente';
+
+ALTER TABLE barbearias ADD COLUMN dono_id INT NOT NULL;
+
+ALTER TABLE barbearias ADD CONSTRAINT fk_dono FOREIGN KEY (dono_id) REFERENCES usuarios(id);
+
+ALTER TABLE barbearias 
+ADD COLUMN codigo_barbearia VARCHAR(5) NOT NULL;
+
+
+
+
+
