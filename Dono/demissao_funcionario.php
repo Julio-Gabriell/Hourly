@@ -4,7 +4,7 @@
 include_once "topo.php";
 
 // Conectando ao banco de dados para carregar os funcionários
-$conn = new mysqli("localhost", "root", "", "hourly_bd");
+$conn = new mysqli("localhost", "root", "", "fusca");
 
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);

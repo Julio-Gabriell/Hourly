@@ -8,7 +8,7 @@ require '../PHPMailer_master/src/SMTP.php';
 
 //? Conecta com o banco de dados 
 
-$con = new mysqli("localhost", "root", "", "hourly_bd");
+$con = new mysqli("localhost", "root", "", "fusca");
 
 if ($con->connect_error) {
   die("Falha na conexão: " . $mysqli->connect_error);

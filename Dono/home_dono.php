@@ -30,7 +30,7 @@ $email = $_SESSION['email'];
           class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
           <?php
           $user_id = $_SESSION['userID'];
-          $conn = new mysqli("localhost", "root", "", "hourly_bd");
+          $conn = new mysqli("localhost", "root", "", "fusca");
 
           $sql = "SELECT foto_perfil FROM usuarios WHERE id=$user_id";
           $result = $conn->query($sql);
@@ -58,7 +58,7 @@ $email = $_SESSION['email'];
       </div>
       <?php
 
-      $conn = new mysqli("localhost", "root", "", "hourly_bd");
+      $conn = new mysqli("localhost", "root", "", "fusca");
 
       $sql = "SELECT nome, email, foto_perfil, funcao FROM funcionarios";
       $result = $conn->query($sql);

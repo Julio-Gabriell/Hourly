@@ -19,7 +19,7 @@
 
 <?php
 // Conexão com o banco de dados
-$conn = new mysqli("localhost", "root", "", "hourly_bd");
+$conn = new mysqli("localhost", "root", "", "fusca");
 
 if ($conn->connect_error) {
   die("Falha na conexão: " . $conn->connect_error);

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_id = $_SESSION['userID']; // Supondo que você tenha o ID do usuário na sessão
 
         // Conexão com o banco de dados
-        $conn = new mysqli("localhost", "root", "", "hourly_bd");
+        $conn = new mysqli("localhost", "root", "", "fusca");
 
         // Verificar a conexão
         if ($conn->connect_error) {

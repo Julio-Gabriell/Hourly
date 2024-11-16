@@ -1,11 +1,11 @@
 -- Apagando a base de dados se existir
-DROP DATABASE IF EXISTS hourly_bd;
+DROP DATABASE IF EXISTS fusca;
 
 -- Criando a base de dados
-CREATE DATABASE hourly_bd;
+CREATE DATABASE fusca;
 
 -- Colocando em uso a base
-USE hourly_bd;
+USE fusca;
 
 -- Criando a tabela de usuários
 CREATE TABLE usuarios(

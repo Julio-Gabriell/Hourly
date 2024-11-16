@@ -10,7 +10,7 @@ require '../PHPMailer_master/src/SMTP.php';
 session_start();
 
 // Conexão com o banco de dados
-$conn = new mysqli("localhost", "root", "", "hourly_bd");
+$conn = new mysqli("localhost", "root", "", "fusca");
 
 // Verifica a conexão
 if ($conn->connect_error) {

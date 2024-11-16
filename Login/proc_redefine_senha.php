@@ -2,7 +2,7 @@
 
 //? Conecta com o banco de dados
 
-$mysqli = new mysqli("localhost", "root", "", "hourly_bd");
+$mysqli = new mysqli("localhost", "root", "", "fusca");
 
 if ($mysqli->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);

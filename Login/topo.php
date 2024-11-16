@@ -35,7 +35,7 @@ verificarLogin();
             <a href="perfil.php">
                 <?php
                 $user_id = $_SESSION['userID'];
-                $conn = new mysqli("localhost", "root", "", "hourly_bd");
+                $conn = new mysqli("localhost", "root", "", "fusca");
 
                 $sql = "SELECT foto_perfil FROM usuarios WHERE id=$user_id";
                 $result = $conn->query($sql);

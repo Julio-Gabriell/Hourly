@@ -2,7 +2,7 @@
 
 include_once "topo.php";
 // Inclui a conexão com o banco de dados
-$conn = new mysqli("localhost", "root", "", "hourly_bd");
+$conn = new mysqli("localhost", "root", "", "fusca");
 
 // Verifica a conexão
 if ($conn->connect_error) {

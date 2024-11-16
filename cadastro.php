@@ -21,6 +21,14 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="cpf" style="color: #13292A;">CPF</label>
+                        <div class="input-group">
+                            <input type="text" name="cpf" id="cpf" required class="form-control" maxlength="14" 
+                                style="color: #13292A; background-color:#78CEBA;  outline: none; box-shadow: none; border: none;"
+                                placeholder="000.000.000-00">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="senha" style="color: #13292A;">Senha</label>
                         <div class="input-group">
                             <input type="password" name="senha1" required class="form-control"

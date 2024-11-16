@@ -17,7 +17,7 @@
               <li>Pode cadastrar até 3 funcionarios</li>
               <li>Pode cadastrar até 10 serviços</li>
             </ul>
-            <a href="https://mpago.la/1SBfeLH">
+            <a href="bronze.php">
               <button type="button" class="w-100 btn btn-lg btn-outline-primary"
                 style="background-color: #78CEBA; color: #13292A; border: none;">Adquirir Plano</button>
             </a>

@@ -3,7 +3,7 @@ include_once "topo.php";
 
 session_start();
 
-$conn = new mysqli("localhost", "root", "", "hourly_bd");
+$conn = new mysqli("localhost", "root", "", "fusca");
 
 // Verifica se a conexão com o banco de dados foi bem-sucedida
 if ($conn->connect_error) {
@@ -57,7 +57,7 @@ $stmt_dono->close();
 <div>
 <?php
 // Conectando ao banco de dados
-$conn = new mysqli("localhost", "root", "", "hourly_bd");
+$conn = new mysqli("localhost", "root", "", "fusca");
 
 // Verificar conexão
 if ($conn->connect_error) {
@@ -87,7 +87,7 @@ $conn->close();
       </div>
       <?php
 
-$conn = new mysqli("localhost", "root", "", "hourly_bd");
+$conn = new mysqli("localhost", "root", "", "fusca");
 
 // Verificar conexão
 if ($conn->connect_error) {
