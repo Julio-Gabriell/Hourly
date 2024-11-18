@@ -1,4 +1,7 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php';
+use GuzzleHttp\Client;
+
 // Inclui a conexão com o banco de dados
 $conn = new mysqli("localhost", "root", "", "fusca");
 
@@ -9,13 +12,11 @@ if ($conn->connect_error) {
 
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recebe os dados do formulário
     $nome_servico = $_POST['nome_servico'];
     $preco_servico = $_POST['preco_servico'];
     $tempo_servico = $_POST['tempo_servico'];
-    $funcionarios = $_POST['funcionarios']; // array de IDs dos funcionários selecionados
+    $funcionarios = $_POST['funcionarios'];
 
-    // Valida se pelo menos um funcionário foi selecionado
     if (empty($funcionarios)) {
         echo "Por favor, selecione pelo menos um funcionário.";
         exit;
@@ -25,49 +26,80 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->begin_transaction();
 
     try {
-        // Insere o novo serviço na tabela 'servicos'
+        // Insere o serviço
         $sql_servico = "INSERT INTO servicos (nome, preco, tempo_medio) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql_servico);
         $stmt->bind_param("sdi", $nome_servico, $preco_servico, $tempo_servico);
         $stmt->execute();
-        
-        // Obtém o ID do serviço inserido
         $servico_id = $stmt->insert_id;
 
-        // Verifica se o ID foi gerado corretamente
         if (!$servico_id) {
             throw new Exception("Falha ao obter o ID do serviço.");
         }
 
-        // Insere os funcionários relacionados ao serviço
+        // Relaciona o serviço aos funcionários
         $sql_relacao = "INSERT INTO servico_funcionario (servico_id, funcionario_id) VALUES (?, ?)";
         $stmt_relacao = $conn->prepare($sql_relacao);
-
-        // Para cada funcionário selecionado, insere uma linha na tabela intermediária
         foreach ($funcionarios as $funcionario_id) {
             $stmt_relacao->bind_param("ii", $servico_id, $funcionario_id);
-            
-            // Executa a inserção e verifica erros
             if (!$stmt_relacao->execute()) {
                 throw new Exception("Erro ao inserir funcionário: " . $stmt_relacao->error);
             }
         }
 
-        // Se tudo deu certo, confirma a transação
-        $conn->commit();
+        // Integração com a API Cal.com
+        $client = new Client([
+            'base_uri' => 'https://api.cal.com/',
+            'headers' => [
+                'Authorization' => 'Bearer cal_live_7b9498d98ca6158662d16d493be45e85', // Com o prefixo Bearer
+                'Content-Type' => 'application/json'
+            ]
+        ]);
 
-        header("Location: home_dono.php");
+        // Depuração: Verificando a resposta de tipos de eventos disponíveis
+        $response = $client->get('v1/event_types');
+        if ($response->getStatusCode() !== 200) {
+            throw new Exception("Erro ao obter tipos de evento: " . $response->getBody());
+        }
+
+        // Exibe os tipos de evento para depuração
+        $event_types = json_decode($response->getBody(), true);
+        // Você pode ajustar o 'event_type_id' baseado no evento desejado, exemplo:
+        // print_r($event_types); // Descomente para ver a resposta completa
+        $evento_id = $event_types[0]['id']; // Supondo que o primeiro evento seja o correto
+
+        // Envia a requisição para criar o agendamento
+        $response = $client->post('v1/bookings', [
+            'json' => [
+                'event_type_id' => $evento_id, // Usando o ID do evento obtido da API
+                'start_time' => '2024-11-15T14:00:00Z', // Horário de início
+                'end_time' => '2024-11-15T14:30:00Z',   // Horário de término
+                'email' => 'email_do_cliente@example.com', // Ajuste conforme necessário
+                'name' => $nome_servico
+            ]
+        ]);
+
+        // Depuração: Verificar o status da resposta e o corpo
+        if ($response->getStatusCode() !== 201) {
+            throw new Exception("Erro na API ao criar o agendamento: " . $response->getBody());
+        }
+
+        // Extrai a resposta da API e pega o ID do evento gerado
+        $api_response = json_decode($response->getBody(), true);
+        $evento_id = $api_response['id']; // ID do evento gerado pela API
+
+        // Commit da transação no banco de dados
+        $conn->commit();
+        header("Location: home_dono.php?success=1");
     } catch (Exception $e) {
-        // Em caso de erro, desfaz as mudanças
+        // Em caso de erro, faz rollback na transação
         $conn->rollback();
         echo "Erro ao cadastrar o serviço: " . $e->getMessage();
+    } finally {
+        // Fecha as conexões
+        $stmt->close();
+        $stmt_relacao->close();
+        $conn->close();
     }
-
-    // Fecha as declarações
-    $stmt->close();
-    $stmt_relacao->close();
 }
-
-// Fecha a conexão com o banco de dados
-$conn->close();
 ?>
