@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
 
         // Depuração: Verificando a resposta de tipos de eventos disponíveis
-        $response = $client->get('v1/event_types');
+        $response = $client->get('v2/event_types');
         if ($response->getStatusCode() !== 200) {
             throw new Exception("Erro ao obter tipos de evento: " . $response->getBody());
         }
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $evento_id = $event_types[0]['id']; // Supondo que o primeiro evento seja o correto
 
         // Envia a requisição para criar o agendamento
-        $response = $client->post('v1/bookings', [
+        $response = $client->post('v2/bookings', [
             'json' => [
                 'event_type_id' => $evento_id, // Usando o ID do evento obtido da API
                 'start_time' => '2024-11-15T14:00:00Z', // Horário de início

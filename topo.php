@@ -6,29 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hourly</title>
   <link rel="stylesheet" href="Css/global.css">
+  <link rel="icon" type="image/x-icon" href="Imgs/icon.ico">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="icon" type="image/x-icon" href="Imgs/icon.ico">
 </head>
 
 <body>
   <div class="container">
-    <header
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 mb-2 mb-md-0">
-        <img src="Imgs/logo.png" alt="">
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="home_dono.php">
+      <img src="Imgs/logo.png" alt="Logo">
+    </a>
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="index.php?p=2" style=" color: #13292A;" class="nav-link px-2">Home</a></li>
-        <li><a href="index.php?p=8" style=" color: #13292A;" class="nav-link px-2">Agende</a></li>
-        <li><a href="index.php?p=4" style=" color: #13292A;" class="nav-link px-2">Fale</a></li>
+    <!-- Botão do menu sanduíche (para dispositivos menores) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Conteúdo do menu -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <!-- Itens do menu -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?p=2" style="color: #13292A;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?p=8" style="color: #13292A;">Agende</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?p=4" style="color: #13292A;">Fale</a>
+        </li>
       </ul>
 
-      <div class="col-md-3 text-end">
-        <a class="btn" style="background-color: #78CEBA; color: #13292A;" href="index.php?p=5" role="button">Login
+      <!-- Botões de Login e Cadastro -->
+      <div class="d-flex">
+        <a class="btn me-2" style="background-color: #78CEBA; color: #13292A;" href="index.php?p=5" role="button">
+          Login
         </a>
-        <a class="btn" style="background-color: #78CEBA; color: #13292A;" href="index.php?p=6" role="button">Cadastro
+        <a class="btn" style="background-color: #78CEBA; color: #13292A;" href="index.php?p=6" role="button">
+          Cadastro
         </a>
       </div>
-    </header>
+    </div>
+  </div>
+</nav>

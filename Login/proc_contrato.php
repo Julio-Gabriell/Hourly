@@ -4,6 +4,8 @@ if (isset($_GET['barbearia_id'])) {
     $barbearia_id = intval($_GET['barbearia_id']); // Converte para inteiro
 }
 
+$_SESSION['barbearia_id'] = $barbearia_id;
+
 // Conexão com o banco de dados
 $mysqli = new mysqli("localhost", "root", "", "fusca");
 

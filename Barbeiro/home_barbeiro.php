@@ -1,8 +1,6 @@
 <?php
 include_once "topo.php";
 
-session_start();
-
 $conn = new mysqli("localhost", "root", "", "fusca");
 
 // Verifica se a conexão com o banco de dados foi bem-sucedida

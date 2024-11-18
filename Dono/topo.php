@@ -18,23 +18,32 @@ verificarLogin();
 
 <body>
     <div class="container">
-        <header class="d-flex flex-wrap align-items-center justify-content-md-between py-3 mb-4 border-bottom">
-            <div class="col-md-3 mb-2 mb-md-0 justify-content-center">
-                <a href="home_dono.php">
-                    <img src="../Imgs/logo.png" alt=""></img>
-                </a>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="home_dono.php">
+            <img src="../Imgs/logo.png" alt="Logo">
+        </a>
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="home_dono.php" style=" color: #13292A;" class="nav-link px-2">Home</a></li>
-                <li><a href="agenda.php" style=" color: #13292A;" class="nav-link px-2">Agendamentos</a></li>
-                <li><a href="fale.php" style=" color: #13292A;" class="nav-link px-2">Fale</a></li>
-                <li><a href="planos.php" style=" color: #13292A;" class="nav-link px-2">Planos</a></li>
-                <li><a href="cadastro_servicos.php" style=" color: #13292A;" class="nav-link px-2">Cadastrar Serviços</a></li>
+        <!-- Botão do menu sanduíche (para dispositivos menores) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Conteúdo do menu -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <!-- Itens do menu -->
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a href="home_dono.php" class="nav-link px-3" style="color: #13292A;">Home</a></li>
+                <li class="nav-item"><a href="agenda.php" class="nav-link px-3" style="color: #13292A;">Agendamentos</a></li>
+                <li class="nav-item"><a href="fale.php" class="nav-link px-3" style="color: #13292A;">Fale</a></li>
+                <li class="nav-item"><a href="planos.php" class="nav-link px-3" style="color: #13292A;">Planos</a></li>
+                <li class="nav-item"><a href="cadastro_servicos.php" class="nav-link px-3" style="color: #13292A;">Cadastrar Serviços</a></li>
             </ul>
 
-
-            <a href="perfil.php">
+            <!-- Foto de perfil -->
+            <a href="perfil.php" class="d-flex align-items-center">
                 <?php
                 $user_id = $_SESSION['userID'];
                 $conn = new mysqli("localhost", "root", "", "fusca");
@@ -58,6 +67,6 @@ verificarLogin();
                 $conn->close();
                 ?>
             </a>
-        </header>
+        </div>
     </div>
-    <div class="container"></div>
+</nav>
