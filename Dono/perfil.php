@@ -17,16 +17,16 @@ $user_id = $_SESSION['userID'];
             <div class="card-body">
                 <form method="post" action="proc_perfilDados.php" id="faleForm">
                     <div class="form-group">
-                        <label for="nomeFale" style="color: #13292A;">Mude Seu Nome</label>
-                        <input type="text" name="nomeFale" required class="form-control"
+                        <label for="nomePerfil" style="color: #13292A;">Mude Seu Nome</label>
+                        <input type="text" name="nomePerfil" required class="form-control"
                             style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none;"
-                            id="nomeFale" placeholder="Primeiro Nome">
+                            id="nomePerfil" placeholder="Primeiro Nome">
                     </div>
                     <div class="form-group">
-                        <label for="emailFale" style="color: #13292A;">Mude Seu Email</label>
-                        <input type="email" name="emailFale" required class="form-control"
+                        <label for="emailPerfil" style="color: #13292A;">Mude Seu Email</label>
+                        <input type="email" name="emailPerfil" required class="form-control"
                             style="color: #13292A; background-color:#78CEBA; outline: none; box-shadow: none; border: none;"
-                            id="emailFale" placeholder="Seu Email">
+                            id="emailPerfil" placeholder="Seu Email">
                     </div>
                     <div class="d-flex justify-content-center">
                         <button type="submit" style="background-color:#78CEBA; color: #13292A;"

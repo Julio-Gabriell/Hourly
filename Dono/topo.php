@@ -1,4 +1,4 @@
-<?php   
+<?php
 include_once 'session.php';
 verificarLogin();
 
@@ -18,55 +18,57 @@ verificarLogin();
 
 <body>
     <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand d-flex align-items-center" href="home_dono.php">
-            <img src="../Imgs/logo.png" alt="Logo">
-        </a>
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+            <div class="container-fluid">
 
-        <!-- Botão do menu sanduíche (para dispositivos menores) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                <a class="navbar-brand d-flex align-items-center" href="home_dono.php">
+                    <img src="../Imgs/logo.png" alt="Logo">
+                </a>
 
-        <!-- Conteúdo do menu -->
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <!-- Itens do menu -->
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a href="home_dono.php" class="nav-link px-3" style="color: #13292A;">Home</a></li>
-                <li class="nav-item"><a href="agenda.php" class="nav-link px-3" style="color: #13292A;">Agendamentos</a></li>
-                <li class="nav-item"><a href="fale.php" class="nav-link px-3" style="color: #13292A;">Fale</a></li>
-                <li class="nav-item"><a href="planos.php" class="nav-link px-3" style="color: #13292A;">Planos</a></li>
-                <li class="nav-item"><a href="cadastro_servicos.php" class="nav-link px-3" style="color: #13292A;">Cadastrar Serviços</a></li>
-            </ul>
+                <!-- (dispositivos menores) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <!-- Foto de perfil -->
-            <a href="perfil.php" class="d-flex align-items-center">
-                <?php
-                $user_id = $_SESSION['userID'];
-                $conn = new mysqli("localhost", "root", "", "fusca");
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a href="home_dono.php" class="nav-link px-3"
+                                style="color: #13292A;">Home</a></li>
+                        <li class="nav-item"><a href="agenda.php" class="nav-link px-3"
+                                style="color: #13292A;">Agendamentos</a></li>
+                        <li class="nav-item"><a href="fale.php" class="nav-link px-3" style="color: #13292A;">Fale</a>
+                        </li>
+                        <li class="nav-item"><a href="planos.php" class="nav-link px-3"
+                                style="color: #13292A;">Planos</a></li>
+                        <li class="nav-item"><a href="cadastro_servicos.php" class="nav-link px-3"
+                                style="color: #13292A;">Cadastrar Serviços</a></li>
+                    </ul>
 
-                $sql = "SELECT foto_perfil FROM usuarios WHERE id=$user_id";
-                $result = $conn->query($sql);
+                    <a href="perfil.php" class="d-flex align-items-center">
+                        <?php
+                        $user_id = $_SESSION['userID'];
+                        $conn = new mysqli("localhost", "root", "", "fusca");
 
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    $foto_perfil = $row['foto_perfil'];
+                        $sql = "SELECT foto_perfil FROM usuarios WHERE id=$user_id";
+                        $result = $conn->query($sql);
 
-                    if ($foto_perfil == null || $foto_perfil == "") {
-                        $foto_perfil = "uploads/default.png"; 
-                    }
+                        if ($result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            $foto_perfil = $row['foto_perfil'];
 
-                    echo '<img style="object-fit: cover; border-radius: 50%;" src="../' . $foto_perfil . '" alt="Foto de perfil" width="100" height="100">';
-                } else {
-                    echo "Erro ao carregar a foto de perfil.";
-                }
+                            if ($foto_perfil == null || $foto_perfil == "") {
+                                $foto_perfil = "uploads/default.png";
+                            }
 
-                $conn->close();
-                ?>
-            </a>
-        </div>
-    </div>
-</nav>
+                            echo '<img style="object-fit: cover; border-radius: 50%;" src="../' . $foto_perfil . '" alt="Foto de perfil" width="100" height="100">';
+                        } else {
+                            echo "Erro ao carregar a foto de perfil.";
+                        }
+
+                        $conn->close();
+                        ?>
+                    </a>
+                </div>
+            </div>
+        </nav>

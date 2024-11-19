@@ -13,43 +13,40 @@
 
 <body>
   <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container-fluid">
-    <!-- Logo -->
-    <a class="navbar-brand d-flex align-items-center" href="home_dono.php">
-      <img src="Imgs/logo.png" alt="Logo">
-    </a>
-
-    <!-- Botão do menu sanduíche (para dispositivos menores) -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Conteúdo do menu -->
-    <div class="collapse navbar-collapse" id="navbarContent">
-      <!-- Itens do menu -->
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?p=2" style="color: #13292A;">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?p=8" style="color: #13292A;">Agende</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?p=4" style="color: #13292A;">Fale</a>
-        </li>
-      </ul>
-
-      <!-- Botões de Login e Cadastro -->
-      <div class="d-flex">
-        <a class="btn me-2" style="background-color: #78CEBA; color: #13292A;" href="index.php?p=5" role="button">
-          Login
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+      <div class="container-fluid">
+        
+        <a class="navbar-brand d-flex align-items-center" href="home_dono.php">
+          <img src="Imgs/logo.png" alt="Logo">
         </a>
-        <a class="btn" style="background-color: #78CEBA; color: #13292A;" href="index.php?p=6" role="button">
-          Cadastro
-        </a>
+
+        <!-- (dispositivos menores) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?p=2" style="color: #13292A;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?p=8" style="color: #13292A;">Agende</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?p=4" style="color: #13292A;">Fale</a>
+            </li>
+          </ul>
+
+          <div class="d-flex">
+            <a class="btn me-2" style="background-color: #78CEBA; color: #13292A;" href="index.php?p=5" role="button">
+              Login
+            </a>
+            <a class="btn" style="background-color: #78CEBA; color: #13292A;" href="index.php?p=6" role="button">
+              Cadastro
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</nav>
+    </nav>

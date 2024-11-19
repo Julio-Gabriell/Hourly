@@ -12,9 +12,9 @@
         </a>
 
         <ul class="nav col-md-4 justify-content-end">
-        <li><a href="index.php?p=2" style=" color: #13292A;" class="nav-link px-2">Home</a></li>
-        <li><a href="index.php?p=8" style=" color: #13292A;" class="nav-link px-2">Agende</a></li>
-        <li><a href="index.php?p=4" style=" color: #13292A;" class="nav-link px-2">Fale</a></li>
+          <li><a href="index.php?p=2" style=" color: #13292A;" class="nav-link px-2">Home</a></li>
+          <li><a href="index.php?p=8" style=" color: #13292A;" class="nav-link px-2">Agende</a></li>
+          <li><a href="index.php?p=4" style=" color: #13292A;" class="nav-link px-2">Fale</a></li>
         </ul>
       </footer>
     </span>

@@ -3,20 +3,19 @@ require 'assas_functions.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtendo os dados do cliente da sessão
     $nomeCompleto = $_SESSION['nomeCompleto'];
     $email = $_SESSION['email'];
     $cpf = $_SESSION['cpf'];
 
-    // Criar cliente no Asaas
+    // Cria cliente no Asaas
     $cliente = criarClienteAsaas($nomeCompleto, $email, $cpf);
     if (isset($cliente['errors'])) {
         echo json_encode(["error" => "Erro ao criar cliente: " . $cliente['errors'][0]['description']]);
         exit;
     }
 
-    // Definir detalhes do plano Prata
-    $valorPlano = 15; // Valor da cobrança única
+    // Defini detalhes do plano
+    $valorPlano = 15;
     $descricaoPlano = "Pagamento Único Plano Prata";
 
     // Criar pagamento único

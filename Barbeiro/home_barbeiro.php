@@ -3,15 +3,12 @@ include_once "topo.php";
 
 $conn = new mysqli("localhost", "root", "", "fusca");
 
-// Verifica se a conexão com o banco de dados foi bem-sucedida
 if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
+  die("Falha na conexão: " . $conn->connect_error);
 }
 
-// Obtém o ID do usuário logado na sessão
 $user_id = $_SESSION['userID'];
 
-// Busca os dados do dono da barbearia no banco de dados
 $sql_dono = "SELECT nomeCompleto, email, foto_perfil FROM usuarios WHERE id = ?";
 $stmt_dono = $conn->prepare($sql_dono);
 $stmt_dono->bind_param("i", $user_id);
@@ -19,12 +16,12 @@ $stmt_dono->execute();
 $result_dono = $stmt_dono->get_result();
 
 if ($result_dono->num_rows > 0) {
-    $dono = $result_dono->fetch_assoc();
-    $nomeCompleto = $dono['nomeCompleto'];
-    $email = $dono['email'];
-    $foto_perfil = $dono['foto_perfil'] ? $dono['foto_perfil'] : "uploads/default.png";
+  $dono = $result_dono->fetch_assoc();
+  $nomeCompleto = $dono['nomeCompleto'];
+  $email = $dono['email'];
+  $foto_perfil = $dono['foto_perfil'] ? $dono['foto_perfil'] : "uploads/default.png";
 } else {
-    echo "Erro ao carregar os dados do dono.";
+  echo "Erro ao carregar os dados do dono.";
 }
 
 $stmt_dono->close();
@@ -49,61 +46,58 @@ $stmt_dono->close();
   <div class="container px-4 py-5">
     <div class="row g-3 row-cols-1 row-cols-md-3">
       <div class="col d-flex align-items-start">
-        <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-          <img style="object-fit: cover; border-radius: 50%;" src="../<?php echo $foto_perfil; ?>" alt="Foto de perfil" width="60" height="60">
+        <div
+          class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+          <img style="object-fit: cover; border-radius: 50%;" src="../<?php echo $foto_perfil; ?>" alt="Foto de perfil"
+            width="60" height="60">
         </div>
-<div>
-<?php
-// Conectando ao banco de dados
-$conn = new mysqli("localhost", "root", "", "fusca");
+        <div>
+          <?php
 
-// Verificar conexão
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
+          $conn = new mysqli("localhost", "root", "", "fusca");
 
-// Supondo que o ID da barbearia esteja em uma variável de sessão ou variável definida
-$barbeariaId = $_SESSION['barbearia_id'];
+          if ($conn->connect_error) {
+            die("Falha na conexão: " . $conn->connect_error);
+          }
 
-// Consulta para obter as informações do dono da barbearia
-$sql = "SELECT u.nomeCompleto, u.email 
+          $barbeariaId = $_SESSION['barbearia_id'];
+
+          $sql = "SELECT u.nomeCompleto, u.email 
         FROM usuarios u
         INNER JOIN barbearias b ON u.id = b.dono_id
         WHERE b.id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $barbeariaId);
-$stmt->execute();
-$stmt->bind_result($nomeCompleto, $email);
-$stmt->fetch();
-$stmt->close();
-$conn->close();
-?>
+          $stmt = $conn->prepare($sql);
+          $stmt->bind_param("i", $barbeariaId);
+          $stmt->execute();
+          $stmt->bind_result($nomeCompleto, $email);
+          $stmt->fetch();
+          $stmt->close();
+          $conn->close();
+          ?>
 
-    <h3 class="fs-2 text-body-emphasis"><?php echo htmlspecialchars($nomeCompleto); ?></h3>
-    <p>Dono | <?php echo htmlspecialchars($email); ?></p>
-</div>
+          <h3 class="fs-2 text-body-emphasis"><?php echo htmlspecialchars($nomeCompleto); ?></h3>
+          <p>Dono | <?php echo htmlspecialchars($email); ?></p>
+        </div>
       </div>
       <?php
 
-$conn = new mysqli("localhost", "root", "", "fusca");
+      $conn = new mysqli("localhost", "root", "", "fusca");
 
-// Verificar conexão
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
+      if ($conn->connect_error) {
+        die("Falha na conexão: " . $conn->connect_error);
+      }
 
-      // Busca os dados dos funcionários
       $sql_func = "SELECT nome, email, foto_perfil, funcao FROM funcionarios";
       $result_func = $conn->query($sql_func);
 
       if ($result_func->num_rows > 0) {
-          while ($func = $result_func->fetch_assoc()) {
-              $nome = $func['nome'];
-              $email = $func['email'];
-              $foto_perfil = $func['foto_perfil'] ? $func['foto_perfil'] : "../uploads/default.png";
-              $funcao = $func['funcao'];
+        while ($func = $result_func->fetch_assoc()) {
+          $nome = $func['nome'];
+          $email = $func['email'];
+          $foto_perfil = $func['foto_perfil'] ? $func['foto_perfil'] : "../uploads/default.png";
+          $funcao = $func['funcao'];
 
-              echo '
+          echo '
               <div class="col d-flex align-items-start">
                   <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                       <img style="object-fit: cover; border-radius: 50%;" src="' . $foto_perfil . '" alt="Foto de perfil" width="60" height="60">
@@ -113,9 +107,9 @@ if ($conn->connect_error) {
                       <p>Função: ' . $funcao . " | " . $email . '</p>
                   </div>
               </div>';
-          }
+        }
       } else {
-          echo "Nenhum funcionário encontrado.";
+        echo "Nenhum funcionário encontrado.";
       }
 
       $conn->close();

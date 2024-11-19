@@ -3,13 +3,11 @@ function verificarLogin()
 {
     session_start();
 
-    // Verifica se o usuário está logado
     if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
         header("Location: ../index.php");
         exit();
     }
 
-    // Verifica se o cargo está definido na sessão
     if (!isset($_SESSION['cargo'])) {
         header("Location: ../index.php");
         exit();
@@ -38,7 +36,7 @@ function verificarLogin()
                 // Verificação do cadastro da barbearia
                 $dono_id = $_SESSION['userID'];
                 include '../conexao.php';
-                
+
                 $query = "SELECT COUNT(*) as barbearia_cadastrada FROM barbearias WHERE dono_id = ?";
                 $stmt = $con->prepare($query);
                 $stmt->bind_param("i", $dono_id);

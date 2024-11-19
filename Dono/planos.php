@@ -30,7 +30,7 @@
             <h4 class="my-0 fw-normal">Prata</h4>
           </div>
           <div class="card-body">
-          <h1 class="card-title pricing-card-title">$15</h1>
+            <h1 class="card-title pricing-card-title">$15</h1>
             <ul class="list-unstyled mt-3 mb-4">
               <li>Pode cadastrar até 5 funcionarios</li>
               <li>Pode cadastrar até 15 serviços</li>
@@ -48,10 +48,10 @@
             <h4 class="my-0 fw-normal">Ouro</h4>
           </div>
           <div class="card-body">
-          <h1 class="card-title pricing-card-title">$20</h1>
+            <h1 class="card-title pricing-card-title">$20</h1>
             <ul class="list-unstyled mt-3 mb-4">
-            <li>Pode cadastrar infinitos funcionarios</li>
-            <li>Pode cadastrar infinitos serviços</li>
+              <li>Pode cadastrar infinitos funcionarios</li>
+              <li>Pode cadastrar infinitos serviços</li>
             </ul>
             <a href="ouro.php">
               <button type="button" class="w-100 btn btn-lg btn-outline-primary"

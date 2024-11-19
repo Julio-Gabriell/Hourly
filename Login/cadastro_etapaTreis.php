@@ -1,4 +1,4 @@
-<?php include_once "topo.php"; 
+<?php include_once "topo.php";
 
 if (isset($_SESSION['dias_funcionamento'])) {
   $dias_selecionados = $_SESSION['dias_funcionamento'];
@@ -35,19 +35,22 @@ if (isset($_SESSION['dias_funcionamento'])) {
             <label class="d-flex justify-content-around"> Manhã
               <input type="time" name="hora_inicio_manha_<?php echo $dia; ?>" id="hora_inicio_manha_<?php echo $dia; ?>">
               <span>até</span>
-              <input type="time" name="hora_termino_manha_<?php echo $dia; ?>" id="hora_termino_manha_<?php echo $dia; ?>">
+              <input type="time" name="hora_termino_manha_<?php echo $dia; ?>"
+                id="hora_termino_manha_<?php echo $dia; ?>">
             </label>
             <label class="d-flex justify-content-around"> Tarde
               <input type="time" name="hora_inicio_tarde_<?php echo $dia; ?>" id="hora_inicio_tarde_<?php echo $dia; ?>"
                 style="margin-left: 8px;">
               <span>até</span>
-              <input type="time" name="hora_termino_tarde_<?php echo $dia; ?>" id="hora_termino_tarde_<?php echo $dia; ?>">
+              <input type="time" name="hora_termino_tarde_<?php echo $dia; ?>"
+                id="hora_termino_tarde_<?php echo $dia; ?>">
             </label>
             <label class="d-flex justify-content-around"> Noite
               <input type="time" name="hora_inicio_noite_<?php echo $dia; ?>" id="hora_inicio_noite_<?php echo $dia; ?>"
                 style="margin-left: 9px;">
               <span>até</span>
-              <input type="time" name="hora_termino_noite_<?php echo $dia; ?>" id="hora_termino_noite_<?php echo $dia; ?>">
+              <input type="time" name="hora_termino_noite_<?php echo $dia; ?>"
+                id="hora_termino_noite_<?php echo $dia; ?>">
             </label>
           </ul>
         </div>

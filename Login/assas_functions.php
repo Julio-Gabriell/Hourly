@@ -1,5 +1,6 @@
 <?php
-function criarClienteAsaas($nomeCompleto, $email, $cpf) {
+function criarClienteAsaas($nomeCompleto, $email, $cpf)
+{
     $url = "https://www.asaas.com/api/v3/customers";
     $apiKey = "aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MDQxMTc6OiRhYWNoX2FkZmE2M2ZlLWUwYjktNDc4OS1hMDNkLWIyOWRkZDRiMzZjMg=="; // Sua chave API fornecida
 
@@ -7,7 +8,6 @@ function criarClienteAsaas($nomeCompleto, $email, $cpf) {
         'name' => $nomeCompleto,
         'email' => $email,
         'cpfCnpj' => $cpf,
-        // Outros dados do cliente conforme necessário
     );
 
     // Iniciar cURL
@@ -26,8 +26,8 @@ function criarClienteAsaas($nomeCompleto, $email, $cpf) {
     $resposta = curl_exec($ch);
 
     // Verificar se ocorreu algum erro na requisição
-    if(curl_errno($ch)) {
-        echo 'Erro cURL: ' . curl_error($ch);  // Exibir erro do cURL
+    if (curl_errno($ch)) {
+        echo 'Erro cURL: ' . curl_error($ch);  
         curl_close($ch);
         return ['errors' => 'Erro na requisição cURL'];
     }
@@ -36,7 +36,6 @@ function criarClienteAsaas($nomeCompleto, $email, $cpf) {
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
-    // Se o código de resposta não for 200, exibir o erro
     if ($httpCode != 200) {
         echo "Erro HTTP: " . $httpCode . " - Resposta: " . $resposta;
         return ['errors' => 'Falha na requisição'];
@@ -47,8 +46,8 @@ function criarClienteAsaas($nomeCompleto, $email, $cpf) {
 }
 
 
-function criarAssinaturaAsaas($clienteId, $valor, $descricao) {
-    // Corrigido: Adicionar aspas na chave de API
+function criarAssinaturaAsaas($clienteId, $valor, $descricao)
+{
     $apiKey = "aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MDQxMTc6OiRhYWNoXzY5YzEwYmY2LTJmODctNDMyMi1hYWU0LTMzMTU4YTBiOGNkMQ==";
     $url = 'https://www.asaas.com/api/v3/subscriptions';
 
@@ -64,7 +63,7 @@ function criarAssinaturaAsaas($clienteId, $valor, $descricao) {
     $options = [
         'http' => [
             'header' => "Content-Type: application/json\r\n" .
-                        "access_token: $apiKey\r\n",
+                "access_token: $apiKey\r\n",
             'method' => 'POST',
             'content' => json_encode($data)
         ]
@@ -75,8 +74,8 @@ function criarAssinaturaAsaas($clienteId, $valor, $descricao) {
     return json_decode($result, true);
 }
 
-function criarPagamentoUnicoAsaas($clienteId, $valor, $descricao) {
-    // Corrigido: Adicionar aspas na chave de API
+function criarPagamentoUnicoAsaas($clienteId, $valor, $descricao)
+{
     $apiKey = "aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MDQxMTc6OiRhYWNoXzY5YzEwYmY2LTJmODctNDMyMi1hYWU0LTMzMTU4YTBiOGNkMQ==";
     $url = 'https://www.asaas.com/api/v3/payments';
 
@@ -91,7 +90,7 @@ function criarPagamentoUnicoAsaas($clienteId, $valor, $descricao) {
     $options = [
         'http' => [
             'header' => "Content-Type: application/json\r\n" .
-                        "access_token: $apiKey\r\n",
+                "access_token: $apiKey\r\n",
             'method' => 'POST',
             'content' => json_encode($data)
         ]

@@ -12,14 +12,15 @@ include_once "topo.php";
             <form action="proc_contrato.php" method="post">
                 <div class="form-group">
                     <div class="input-group">
-                        <input id="codigo_barbeariaForm" name="codigo_barbeariaForm" placeholder="Código da barbearia" class="form-control" type="text" required>
+                        <input id="codigo_barbeariaForm" name="codigo_barbeariaForm" placeholder="Código da barbearia"
+                            class="form-control" type="text" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row mt-2 d-flex justify-content-center">
                         <button type="submit" style="background-color:#78CEBA; color: #13292A;" class="btn w-75">
                             Confirmar
-                        </button> 
+                        </button>
                     </div>
                 </div>
             </form>

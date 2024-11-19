@@ -55,7 +55,7 @@ include_once "topo.php";
 
                 preview.src = e.target.result;
                 preview.style.display = 'block';
-                uploadIcon.style.display = 'none'; 
+                uploadIcon.style.display = 'none';
             };
 
             reader.readAsDataURL(file);

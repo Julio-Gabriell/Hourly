@@ -23,7 +23,8 @@ include_once "topo.php";
           <div class="form-group">
             <label for="cep_barbearia" style="color: #13292A;">CEP da Barbearia</label>
             <div class="input-group">
-              <input type="tel" id="cep_barbearia" name="cep_barbearia" id="cep" pattern="[0-9]{5}-[0-9]{3}" required class="form-control"
+              <input type="tel" id="cep_barbearia" name="cep_barbearia" id="cep" pattern="[0-9]{5}-[0-9]{3}" required
+                class="form-control"
                 style="color: #13292A; background-color:#479D89;  outline: none; box-shadow: none; border: none;"
                 placeholder="CEP">
             </div>

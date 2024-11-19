@@ -1,8 +1,7 @@
 <?php
-// Inicie a sessão
+
 session_start();
 
-// Verifique se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $dias_funcionamento = [];
@@ -10,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['segunda'])) {
         $dias_funcionamento[] = 'segunda';
     }
-    if (isset($_POST['terca'])) { 
+    if (isset($_POST['terca'])) {
         $dias_funcionamento[] = 'terça';
     }
     if (isset($_POST['quarta'])) {

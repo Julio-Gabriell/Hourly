@@ -6,8 +6,6 @@ require '../PHPMailer_master/src/Exception.php';
 require '../PHPMailer_master/src/PHPMailer.php';
 require '../PHPMailer_master/src/SMTP.php';
 
-//? Conecta com o banco de dados 
-
 $con = new mysqli("localhost", "root", "", "fusca");
 
 if ($con->connect_error) {
@@ -16,7 +14,7 @@ if ($con->connect_error) {
 
 $email = $_POST['email'];
 
-//? Verifica se o e-mail existe no banco de dados
+// Verifica se o e-mail existe no banco de dados
 
 $sql = "SELECT * FROM usuarios WHERE email = ?";
 $stmt = $con->prepare($sql);
@@ -28,18 +26,18 @@ if ($result->num_rows > 0) {
   $token = bin2hex(random_bytes(50));
   $expiracao = date("Y-m-d H:i:s", strtotime('+1 hour'));
 
-  //? Atualize o token e a data de expiração no banco de dados
+  // Atualize o token e a data de expiração no banco de dados
 
   $sql = "UPDATE usuarios SET token = ?, expiracao_token = ? WHERE email = ?";
   $stmt = $con->prepare($sql);
   $stmt->bind_param("sss", $token, $expiracao, $email);
   $stmt->execute();
 
-  //? Crie o link de recuperação de senha
+  // link de recuperação de senha
 
   $link = "http://localhost/hourly/login/redefinir_senha.php?token=$token";
 
-  //? Configuração e envio do e-mail
+  // Configuração e envio do e-mail
 
   $mail = new PHPMailer(true);
 
@@ -57,8 +55,8 @@ if ($result->num_rows > 0) {
     $mail->addAddress($email);
 
     $mail->isHTML(true);
-$mail->Subject = 'Redefina sua senha';
-$mail->Body = "
+    $mail->Subject = 'Redefina sua senha';
+    $mail->Body = "
     <p>Clique no botão abaixo para redefinir sua senha:</p>
     <a href='$link' style='
       display: inline-block;
@@ -74,7 +72,7 @@ $mail->Body = "
     <br><br>
     <p>Hourly© 2024 Company, Inc</p>
 ";
-$mail->AltBody = "Clique no link para redefinir sua senha: $link";
+    $mail->AltBody = "Clique no link para redefinir sua senha: $link";
 
 
     $mail->send();

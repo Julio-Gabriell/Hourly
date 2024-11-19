@@ -13,7 +13,8 @@ if ($mysqli->connect_error) {
     die("Erro na conexão com o banco de dados: " . $mysqli->connect_error);
 }
 
-function validarCPF($cpf) {
+function validarCPF($cpf)
+{
     $cpf = preg_replace('/[^0-9]/', '', $cpf);
     if (strlen($cpf) != 11 || preg_match('/(\d)\1{10}/', $cpf)) {
         return false;
@@ -32,12 +33,12 @@ function validarCPF($cpf) {
 }
 
 try {
-    // Captura os dados do formulário
-    $email = $_POST['email'] ?? null;
-    $senha1 = $_POST['senha1'] ?? null;
-    $senha2 = $_POST['senha2'] ?? null;
-    $nome = $_POST['nome'] ?? null;
-    $cpf = $_POST['cpf'] ?? null;
+    $email = $_POST['email'];
+    $senha1 = $_POST['senha1'];
+    $senha2 = $_POST['senha2'];
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $cargo = 'cliente'; 
 
     // Validações
     if (empty($cpf) || !validarCPF($cpf)) {
@@ -53,30 +54,28 @@ try {
         throw new Exception("Preencha todos os campos obrigatórios.");
     }
 
-    // Remover caracteres especiais do CPF
+    // Retira caracteres especiais do CPF
     $cpf = preg_replace('/[^0-9]/', '', $cpf);
-    
-    // Sanitizar dados para segurança
-    $senhaHash = md5($senha1); // Usando MD5 para a senha
+
+    $senhaHash = md5($senha1);
     $cpf = htmlentities($cpf);
 
-    // Preparação da consulta SQL
     $stmt = $mysqli->prepare("INSERT INTO usuarios (cpf, senha, email, nomeCompleto) VALUES (?, ?, ?, ?)");
     if (!$stmt) {
         throw new Exception("Preparação da declaração falhou: " . $mysqli->error);
     }
 
-    // Vincular parâmetros e executar a consulta
     $stmt->bind_param('ssss', $cpf, $senhaHash, $email, $nome);
     $stmt->execute();
 
-    // Verificar se a operação foi bem-sucedida
     if ($stmt->affected_rows > 0) {
         $_SESSION['email'] = $email;
         $_SESSION['logado'] = true;
         $_SESSION['nomeCompleto'] = $nome;
         $_SESSION['cpf'] = $cpf;
         $_SESSION['userID'] = $stmt->insert_id;
+        $_SESSION['cargo'] = $cargo;
+
 
         header("Location: Login/home_logado.php");
         exit();

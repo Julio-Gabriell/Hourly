@@ -2,15 +2,12 @@
 require __DIR__ . '/../vendor/autoload.php';
 use GuzzleHttp\Client;
 
-// Inclui a conexão com o banco de dados
 $conn = new mysqli("localhost", "root", "", "fusca");
 
-// Verifica a conexão
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-// Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome_servico = $_POST['nome_servico'];
     $preco_servico = $_POST['preco_servico'];
@@ -22,11 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Inicia a transação
     $conn->begin_transaction();
 
     try {
-        // Insere o serviço
         $sql_servico = "INSERT INTO servicos (nome, preco, tempo_medio) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql_servico);
         $stmt->bind_param("sdi", $nome_servico, $preco_servico, $tempo_servico);
@@ -37,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             throw new Exception("Falha ao obter o ID do serviço.");
         }
 
-        // Relaciona o serviço aos funcionários
         $sql_relacao = "INSERT INTO servico_funcionario (servico_id, funcionario_id) VALUES (?, ?)";
         $stmt_relacao = $conn->prepare($sql_relacao);
         foreach ($funcionarios as $funcionario_id) {
@@ -51,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $client = new Client([
             'base_uri' => 'https://api.cal.com/',
             'headers' => [
-                'Authorization' => 'Bearer cal_live_7b9498d98ca6158662d16d493be45e85', // Com o prefixo Bearer
+                'Authorization' => 'Bearer cal_live_7b9498d98ca6158662d16d493be45e85', 
                 'Content-Type' => 'application/json'
             ]
         ]);
@@ -64,8 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Exibe os tipos de evento para depuração
         $event_types = json_decode($response->getBody(), true);
-        // Você pode ajustar o 'event_type_id' baseado no evento desejado, exemplo:
-        // print_r($event_types); // Descomente para ver a resposta completa
         $evento_id = $event_types[0]['id']; // Supondo que o primeiro evento seja o correto
 
         // Envia a requisição para criar o agendamento
@@ -96,7 +88,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->rollback();
         echo "Erro ao cadastrar o serviço: " . $e->getMessage();
     } finally {
-        // Fecha as conexões
         $stmt->close();
         $stmt_relacao->close();
         $conn->close();

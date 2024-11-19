@@ -1,16 +1,13 @@
 <?php
-// demissao_funcionario.php
 
 include_once "topo.php";
 
-// Conectando ao banco de dados para carregar os funcionários
 $conn = new mysqli("localhost", "root", "", "fusca");
 
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-// Selecionando os funcionários existentes
 $sql = "SELECT id, nome FROM funcionarios";
 $result = $conn->query($sql);
 ?>

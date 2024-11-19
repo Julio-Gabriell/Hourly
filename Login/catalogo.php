@@ -2,23 +2,25 @@
 
 <div class="d-flex justify-content-between align-items-center">
   <form class="flex-grow-1 me-3" method="GET">
-    <input type="search" name="search" class="form-control me-3" style="color: #13292A;" placeholder="Procurar..." aria-label="Search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+    <input type="search" name="search" class="form-control me-3" style="color: #13292A;" placeholder="Procurar..."
+      aria-label="Search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
   </form>
   <div class="btn-group">
-    <button class="btn btn-secondary btn-sm" style="background-color: #78CEBA; border: none; color: #13292A;" type="button">
+    <button class="btn btn-secondary btn-sm" style="background-color: #78CEBA; border: none; color: #13292A;"
+      type="button">
       Filtro
     </button>
-    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" style="background-color: #78CEBA; border: none; color: #13292A;" data-bs-toggle="dropdown" aria-expanded="false">
+    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
+      style="background-color: #78CEBA; border: none; color: #13292A;" data-bs-toggle="dropdown" aria-expanded="false">
       <span class="visually-hidden">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu p-1">
-      <!-- Se houver algum texto aqui, adicione a cor também -->
+      <!-- Cidades aqui -->
     </ul>
   </div>
 </div>
 
 <?php
-// Conexão com o banco de dados
 $conn = new mysqli("localhost", "root", "", "fusca");
 
 if ($conn->connect_error) {

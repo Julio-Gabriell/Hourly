@@ -13,11 +13,11 @@
         </a>
 
         <ul class="nav col-md-4 justify-content-end">
-        <a href="home_logado.php" class="nav-link text-dark px-3">Home</a>
-        <a href="catalogo.php" class="nav-link text-dark px-3">Agendamentos</a>
-        <a href="fale.php" class="nav-link text-dark px-3">Fale</a>
-        <a href="planos.php" class="nav-link text-dark px-3">Planos</a>
-        <a href="cadastrar_servicos.php" class="nav-link text-dark px-3">Cadastrar Serviços</a>
+          <a href="home_logado.php" class="nav-link text-dark px-3">Home</a>
+          <a href="catalogo.php" class="nav-link text-dark px-3">Agendamentos</a>
+          <a href="fale.php" class="nav-link text-dark px-3">Fale</a>
+          <a href="planos.php" class="nav-link text-dark px-3">Planos</a>
+          <a href="cadastrar_servicos.php" class="nav-link text-dark px-3">Cadastrar Serviços</a>
         </ul>
       </footer>
     </span>
