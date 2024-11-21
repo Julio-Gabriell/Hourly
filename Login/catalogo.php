@@ -1,5 +1,27 @@
 <?php
-include_once "topo.php"; 
+include_once "topo.php"; ?>
+
+<div class="d-flex justify-content-between align-items-center">
+  <form class="flex-grow-1 me-3 mt-3" method="GET">
+    <input type="search" name="search" class="form-control me-3" style="color: #13292A;" placeholder="Procurar..."
+      aria-label="Search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+  </form>
+  <div class="btn-group mt-3">
+    <button class="btn btn-secondary btn-sm" style="background-color: #78CEBA; border: none; color: #13292A;"
+      type="button">
+      Filtro
+    </button>
+    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
+      style="background-color: #78CEBA; border: none; color: #13292A;" data-bs-toggle="dropdown" aria-expanded="false">
+      <span class="visually-hidden">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu p-1">
+      <!-- Cidades aqui -->
+    </ul>
+  </div>
+</div>
+
+<?php
 
 $conn = new mysqli("localhost", "root", "", "fusca");
 
@@ -113,7 +135,6 @@ if ($result->num_rows > 0) {
           $cidade = "";
           $estado = "";
       }
-
       // Define o ícone da estrela (amarela para favorito, cinza para não favorito)
       $estrela = $favoritado ? 'fa-star text-warning' : 'fa-star text-secondary';
 

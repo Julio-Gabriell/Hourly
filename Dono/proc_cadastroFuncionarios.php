@@ -81,7 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Inclui o ID da barbearia no link
             $link = "http://localhost/hourly/Login/aceitar_contrato.php?barbearia_id=" . $barbearia_id; // link de aceitação de contrato
-
+            
+            $mail->CharSet = 'UTF-8';
             $mail->isHTML(true);
             $mail->Subject = "Barbearia $nome_barbearia te Convida";
             $mail->Body = "

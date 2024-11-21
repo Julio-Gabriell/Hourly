@@ -1,4 +1,13 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../PHPMailer_master/src/Exception.php';
+require '../PHPMailer_master/src/PHPMailer.php';
+require '../PHPMailer_master/src/SMTP.php';
+
+
 $conn = new mysqli("localhost", "root", "", "fusca");
 
 if ($conn->connect_error) {
@@ -7,96 +16,91 @@ if ($conn->connect_error) {
 
 session_start();
 
+// Verifica se as variáveis de sessão estão definidas
+if (!isset($_SESSION['nome_barbearia'], $_SESSION['cep_barbearia'], $_SESSION['num_barbearia'], $_SESSION['tel_barbearia'], $_SESSION['des_barbearia'], $_SESSION['dias_funcionamento'], $_SESSION['horarios_funcionamento'], $_SESSION['userID'])) {
+    die("Erro: Informações insuficientes para cadastro da barbearia.");
+}
+
 $nome_barbearia = $_SESSION['nome_barbearia'];
 $cep = $_SESSION['cep_barbearia'];
 $numero = $_SESSION['num_barbearia'];
 $telefone = $_SESSION['tel_barbearia'];
 $descricao = $_SESSION['des_barbearia'];
-
 $dias_funcionamento = $_SESSION['dias_funcionamento'];
 $horarios_funcionamento = $_SESSION['horarios_funcionamento'];
+$dono_id = $_SESSION['userID'];
 
+// Função para buscar o CEP
 function buscarCep($cep, $conn)
 {
-    // Remove traços e espaços para garantir o formato correto
     $cep = preg_replace('/[^0-9]/', '', $cep);
 
-    // Verifica se o CEP tem 8 dígitos
     if (strlen($cep) != 8) {
-        return "CEP inválido!";
+        return null; // Retorna null se o CEP for inválido
     }
 
-    // Verifica se o CEP já está cadastrado no banco
     $sql = "SELECT * FROM enderecos WHERE cep = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('s', $cep);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Se o CEP já estiver no banco, retorna os dados
     if ($result->num_rows > 0) {
         return $result->fetch_assoc();
     }
 
-    // Se não encontrar o CEP no banco, faz a requisição à API
     $url = "https://viacep.com.br/ws/{$cep}/json/";
-    $response = file_get_contents($url);
+    $response = @file_get_contents($url);
 
-    // Verifica se houve uma resposta
     if (!$response) {
-        return "Não foi possível buscar o CEP!";
+        return null; // Retorna null em caso de falha na API
     }
 
-    // Converte a resposta JSON em um array associativo
     $dadosCep = json_decode($response, true);
 
-    // Verifica se houve erro na resposta da API
     if (isset($dadosCep['erro']) && $dadosCep['erro'] === true) {
-        return "CEP não encontrado!";
+        return null; // Retorna null se o CEP não for encontrado
     }
 
-    // Armazena os dados do CEP no banco de dados
     $sql = "INSERT INTO enderecos (cep, rua, bairro, cidade, estado) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('sssss', $cep, $dadosCep['logradouro'], $dadosCep['bairro'], $dadosCep['localidade'], $dadosCep['uf']);
     $stmt->execute();
 
-    // Retorna os dados do CEP como array
     return $dadosCep;
 }
 
-// Chama a função buscarCep
+// Busca o CEP
 $dados = buscarCep($cep, $conn);
 
-if (is_array($dados)) {
-    // Armazena os dados do CEP em variáveis
-    $rua = $dados['logradouro'];
-    $bairro = $dados['bairro'];
-    $cidade = $dados['localidade'];
-    $estado = $dados['uf'];
+if (!$dados) {
+    die("Erro: Não foi possível buscar o CEP.");
 }
 
-$dono_id = $_SESSION['userID'];
+$rua = $dados['logradouro'];
+$bairro = $dados['bairro'];
+$cidade = $dados['localidade'];
+$estado = $dados['uf'];
 
-// Gera um código de 5 dígitos para a barbearia
+// Gera o código da barbearia
 $codigo_barbearia = str_pad(rand(0, 99999), 5, '0', STR_PAD_LEFT);
 
+// Insere os dados da barbearia
 $sqlBarbearia = "INSERT INTO barbearias (nome, cep, numero, descricao, dono_id, codigo_barbearia) VALUES (?, ?, ?, ?, ?, ?)";
 $stmtBarbearia = $conn->prepare($sqlBarbearia);
 $stmtBarbearia->bind_param('ssssss', $nome_barbearia, $cep, $numero, $descricao, $dono_id, $codigo_barbearia);
 
 if ($stmtBarbearia->execute()) {
     $barbearia_id = $stmtBarbearia->insert_id;
-
     $_SESSION['barbearia_id'] = $barbearia_id;
 
-    // Inserir telefone
+    // Insere o telefone
     $sqlTelefone = "INSERT INTO telefones_barbearia (barbearia_id, telefone) VALUES (?, ?)";
     $stmtTelefone = $conn->prepare($sqlTelefone);
     $stmtTelefone->bind_param('is', $barbearia_id, $telefone);
     $stmtTelefone->execute();
 
-    // Inserir dias de funcionamento
+    // Insere os dias de funcionamento
     $sqlDias = "INSERT INTO dias_funcionamento (barbearia_id, dia_semana) VALUES (?, ?)";
     $stmtDias = $conn->prepare($sqlDias);
 
@@ -105,7 +109,7 @@ if ($stmtBarbearia->execute()) {
         $stmtDias->execute();
     }
 
-    // Inserir horários de funcionamento
+    // Insere os horários de funcionamento
     $sqlHorarios = "INSERT INTO horarios_funcionamento (barbearia_id, dia_semana, turno, inicio, termino) VALUES (?, ?, ?, ?, ?)";
     $stmtHorarios = $conn->prepare($sqlHorarios);
 
@@ -118,15 +122,47 @@ if ($stmtBarbearia->execute()) {
         }
     }
 
-    // Redireciona para a página do dono
+    // Envia o e-mail
+    $email = $_SESSION['email'];
+
+    if ($email) {
+
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'paespintoj@gmail.com';
+            $mail->Password = 'iogmgrtltrdrtwqo'; 
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
+
+            $mail->setFrom('paespintoj@gmail.com', 'Hourly');
+            $mail->addAddress($email);
+
+            $mail->CharSet = 'UTF-8';
+            $mail->isHTML(true);
+            $mail->Subject = "Parabéns por abrir sua barbearia em nosso sistema!";
+            $mail->Body = "
+                <p>Ao contratar funcionários, informe este código: <b>$codigo_barbearia</b></p>
+                <h1>Bem-vindo ao Hourly</h1>
+                <p>Hourly© 2024 Company, Inc</p>
+            ";
+
+            $mail->send();
+        } catch (Exception $e) {
+            echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
+        }
+    }
+
     header("Location: ../Dono/home_dono.php");
+    exit;
 } else {
-    echo "Erro ao inserir os dados: " . $conn->error;
+    echo "Erro ao cadastrar a barbearia: " . $conn->error;
 }
 
+// Fecha as conexões
 $stmtBarbearia->close();
-$stmtTelefone->close();
-$stmtDias->close();
-$stmtHorarios->close();
 $conn->close();
 ?>

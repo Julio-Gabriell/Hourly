@@ -56,6 +56,7 @@ if (isset($_POST['funcionario_id'])) {
                 $mail->setFrom('paespintoj@gmail.com', 'Hourly');
                 $mail->addAddress($email); 
 
+                $mail->CharSet = 'UTF-8';
                 $mail->isHTML(true);
                 $mail->Subject = "Caro Profissional, informamos você foi desligado da empresa.";
                 $mail->Body = "Obrigado por fazer parte do nosso sistema, até a próxima!";
