@@ -16,7 +16,7 @@ $descricao = $_SESSION['des_barbearia'];
 $dias_funcionamento = $_SESSION['dias_funcionamento'];
 $horarios_funcionamento = $_SESSION['horarios_funcionamento'];
 
-function buscarCep($cep)
+function buscarCep($cep, $conn)
 {
     // Remove traços e espaços para garantir o formato correto
     $cep = preg_replace('/[^0-9]/', '', $cep);
@@ -26,10 +26,20 @@ function buscarCep($cep)
         return "CEP inválido!";
     }
 
-    // Monta a URL de requisição para a API do ViaCEP
-    $url = "https://viacep.com.br/ws/{$cep}/json/";
+    // Verifica se o CEP já está cadastrado no banco
+    $sql = "SELECT * FROM enderecos WHERE cep = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $cep);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    // Faz a requisição para a API
+    // Se o CEP já estiver no banco, retorna os dados
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc();
+    }
+
+    // Se não encontrar o CEP no banco, faz a requisição à API
+    $url = "https://viacep.com.br/ws/{$cep}/json/";
     $response = file_get_contents($url);
 
     // Verifica se houve uma resposta
@@ -40,16 +50,26 @@ function buscarCep($cep)
     // Converte a resposta JSON em um array associativo
     $dadosCep = json_decode($response, true);
 
-    // Verifica se houve algum erro na busca do CEP
+    // Verifica se houve erro na resposta da API
     if (isset($dadosCep['erro']) && $dadosCep['erro'] === true) {
         return "CEP não encontrado!";
     }
 
-    return $dadosCep; // Retorna os dados do CEP como array
+    // Armazena os dados do CEP no banco de dados
+    $sql = "INSERT INTO enderecos (cep, rua, bairro, cidade, estado) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sssss', $cep, $dadosCep['logradouro'], $dadosCep['bairro'], $dadosCep['localidade'], $dadosCep['uf']);
+    $stmt->execute();
+
+    // Retorna os dados do CEP como array
+    return $dadosCep;
 }
 
+// Chama a função buscarCep
+$dados = buscarCep($cep, $conn);
+
 if (is_array($dados)) {
-    // Armazena cada dado em uma variável específica
+    // Armazena os dados do CEP em variáveis
     $rua = $dados['logradouro'];
     $bairro = $dados['bairro'];
     $cidade = $dados['localidade'];
@@ -70,11 +90,13 @@ if ($stmtBarbearia->execute()) {
 
     $_SESSION['barbearia_id'] = $barbearia_id;
 
+    // Inserir telefone
     $sqlTelefone = "INSERT INTO telefones_barbearia (barbearia_id, telefone) VALUES (?, ?)";
     $stmtTelefone = $conn->prepare($sqlTelefone);
     $stmtTelefone->bind_param('is', $barbearia_id, $telefone);
     $stmtTelefone->execute();
 
+    // Inserir dias de funcionamento
     $sqlDias = "INSERT INTO dias_funcionamento (barbearia_id, dia_semana) VALUES (?, ?)";
     $stmtDias = $conn->prepare($sqlDias);
 
@@ -83,6 +105,7 @@ if ($stmtBarbearia->execute()) {
         $stmtDias->execute();
     }
 
+    // Inserir horários de funcionamento
     $sqlHorarios = "INSERT INTO horarios_funcionamento (barbearia_id, dia_semana, turno, inicio, termino) VALUES (?, ?, ?, ?, ?)";
     $stmtHorarios = $conn->prepare($sqlHorarios);
 
@@ -95,6 +118,7 @@ if ($stmtBarbearia->execute()) {
         }
     }
 
+    // Redireciona para a página do dono
     header("Location: ../Dono/home_dono.php");
 } else {
     echo "Erro ao inserir os dados: " . $conn->error;
