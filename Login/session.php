@@ -31,28 +31,30 @@ function verificarLogin()
                 exit();
             }
         } elseif ($cargo === 'dono') {
+            include '../conexao.php';
+
+            $query = "SELECT COUNT(*) as barbearia_cadastrada FROM barbearias WHERE dono_id = ?";
+            $stmt = $con->prepare($query);
+            $stmt->bind_param("i", $dono_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            $stmt->close();
+            $con->close();
+
+            if ($row['barbearia_cadastrada'] > 0) {
+                $_SESSION['paginaInicialAcessada'] = true;
+                header("Location: ../Dono/home_dono.php");
+            } else {
+                $_SESSION['paginaInicialAcessada'] = true;
+                header("Location: cadastro_etapaUM.php");
+            }
+
             // Verifica se o dono já está na página correta ou se já foi redirecionado
             if (!in_array($paginaAtual, ['home_dono.php', 'cadastro_etapaUM.php'])) {
                 // Verificação do cadastro da barbearia
                 $dono_id = $_SESSION['userID'];
-                include '../conexao.php';
 
-                $query = "SELECT COUNT(*) as barbearia_cadastrada FROM barbearias WHERE dono_id = ?";
-                $stmt = $con->prepare($query);
-                $stmt->bind_param("i", $dono_id);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                $row = $result->fetch_assoc();
-                $stmt->close();
-                $con->close();
-
-                if ($row['barbearia_cadastrada'] > 0) {
-                    $_SESSION['paginaInicialAcessada'] = true;
-                    header("Location: ../Dono/home_dono.php");
-                } else {
-                    $_SESSION['paginaInicialAcessada'] = true;
-                    header("Location: cadastro_etapaUM.php");
-                }
                 exit();
             }
         }

@@ -17,6 +17,9 @@ include_once "topo.php";
       <img class="rounded-lg-3" src="../Imgs/postezinho.png" alt="" width="500">
     </div>
   </div>
-  <div class="container px-4 py-5">
-    <div class="row g-3 row-cols-1 row-cols-md-3">
-      <div class="col d-flex align-items-start">
+
+      <?php
+
+include_once "rodape.php";
+
+?>

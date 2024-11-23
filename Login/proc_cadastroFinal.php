@@ -134,7 +134,7 @@ if ($stmtBarbearia->execute()) {
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'paespintoj@gmail.com';
-            $mail->Password = 'iogmgrtltrdrtwqo'; 
+            $mail->Password = 'iogmgrtltrdrtwqo';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port = 465;
 
