@@ -10,7 +10,7 @@ if ($mysqli->connect_error) {
 $token = $_POST['token'];
 $nova_senha = md5($_POST['nova_senha']);
 
-// Verifique o token e a validade
+// Verifica o token e a validade
 
 $sql = "SELECT email FROM usuarios WHERE token = ? AND expiracao_token > NOW()";
 $stmt = $mysqli->prepare($sql);
@@ -20,7 +20,7 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
 
-    // Atualize a senha no banco de dados
+    // Atualiza a senha no banco de dados
 
     $sql = "UPDATE usuarios SET senha = ?, token = NULL, expiracao_token = NULL WHERE token = ?";
     $stmt = $mysqli->prepare($sql);

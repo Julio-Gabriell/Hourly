@@ -103,14 +103,6 @@ if (!empty($cidadeFiltro)) {
     $stmt->execute();
     $result = $stmt->get_result();
 }
-
-// Adicione este debug no início do arquivo para verificar as cidades disponíveis
-echo "<!-- Cidades disponíveis: ";
-print_r($cidades);
-echo " -->";
-
-// E este debug para ver qual cidade está sendo filtrada
-echo "<!-- Cidade do filtro: " . $cidadeFiltro . " -->";
 ?>
 
 <!-- Seção de Busca e Filtros -->
