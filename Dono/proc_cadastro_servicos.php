@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $client = new Client([
             'base_uri' => 'https://api.cal.com/',
             'headers' => [
-                'Authorization' => 'Bearer cal_live_7b9498d98ca6158662d16d493be45e85', 
+                
                 'Content-Type' => 'application/json'
             ]
         ]);

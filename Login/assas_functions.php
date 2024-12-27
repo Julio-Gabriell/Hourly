@@ -2,7 +2,7 @@
 function criarClienteAsaas($nomeCompleto, $email, $cpf)
 {
     $url = "https://www.asaas.com/api/v3/customers";
-    $apiKey = "aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MDQxMTc6OiRhYWNoX2FkZmE2M2ZlLWUwYjktNDc4OS1hMDNkLWIyOWRkZDRiMzZjMg=="; // Sua chave API fornecida
+     // Sua chave API fornecida
 
     $dados = array(
         'name' => $nomeCompleto,
@@ -48,7 +48,7 @@ function criarClienteAsaas($nomeCompleto, $email, $cpf)
 
 function criarAssinaturaAsaas($clienteId, $valor, $descricao)
 {
-    $apiKey = "aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MDQxMTc6OiRhYWNoXzY5YzEwYmY2LTJmODctNDMyMi1hYWU0LTMzMTU4YTBiOGNkMQ==";
+    
     $url = 'https://www.asaas.com/api/v3/subscriptions';
 
     $data = [
@@ -76,7 +76,7 @@ function criarAssinaturaAsaas($clienteId, $valor, $descricao)
 
 function criarPagamentoUnicoAsaas($clienteId, $valor, $descricao)
 {
-    $apiKey = "aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDA1MDQxMTc6OiRhYWNoXzY5YzEwYmY2LTJmODctNDMyMi1hYWU0LTMzMTU4YTBiOGNkMQ==";
+    
     $url = 'https://www.asaas.com/api/v3/payments';
 
     $data = [
